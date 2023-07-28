@@ -1,5 +1,3 @@
-
-
 export const Blogs = () => {
     console.log("Blogs");
 
