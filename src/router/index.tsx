@@ -1,35 +1,44 @@
-import { Blogs } from "../pages/Blogs";
-import { Contact } from "../pages/Contact";
-import { Decks } from "../pages/Decks";
-import { Home } from "../pages/Home";
-import { Page404 } from "../pages/Page404";
+import { ElementType, Suspense, lazy } from "react";
+
+const LazyHome = lazy(() => import("../pages/Home"));
+const LazyBlogs = lazy(() => import("../pages/Blogs"));
+const LazyContact = lazy(() => import("../pages/Contact"));
+const LazyDecks = lazy(() => import("../pages/Decks"));
+const LazyPage404 = lazy(() => import("../pages/Page404"));
+
+
+export const SuspenseWrapper = (Element: ElementType) => (props: any) => (
+    <Suspense fallback={<div>Loading...</div>}>
+        <Element {...props} />
+    </Suspense>
+);
 
 
 export const routes = {
     root: {
         path: '/',
-        component: Home
+        component: SuspenseWrapper(LazyHome)
     },
     blog: {
         root: {
             path: '/blogs',
-            component: Blogs
+            component: SuspenseWrapper(LazyBlogs)
         }
-    },    
+    },
     deck: {
         root: {
             path: '/decks',
-            component: Decks
+            component: SuspenseWrapper(LazyDecks)
         }
     },
     contact: {
         root: {
             path: '/contact',
-            component: Contact
+            component: SuspenseWrapper(LazyContact)
         }
     },
     default: {
         path: '*',
-        component: Page404
+        component: SuspenseWrapper(LazyPage404)
     }
 }
