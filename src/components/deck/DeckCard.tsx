@@ -1,5 +1,4 @@
-import { DeckType } from "../../types/deck"
-
+import { DeckType } from "../../api/types"
 
 type Props = {
     item: DeckType
@@ -12,7 +11,6 @@ export const DeckCard = ({item}: Props) => {
             <div>{item.id}</div>
             <div>{item.name}</div>
             <div>{item.description}</div>
-            <div>{item.numberOfCards}</div>
         </>
     )
 }

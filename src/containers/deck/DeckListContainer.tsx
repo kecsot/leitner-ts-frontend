@@ -1,36 +1,27 @@
 
+import { useEffect, useState } from "react";
+import { useDeckResource } from "../../api/resource";
+import { DeckType } from "../../api/types";
 import { DeckCard } from "../../components/deck/DeckCard";
-import { DeckType } from "../../types/deck";
+import { ResourceQuery } from "../../api/resource/base/ResourceQuery";
+
 
 export const DeckListContainer = () => {
 
-    const fakeDecks: DeckType[] = [
-        {
-            id: 1,
-            name: "Deck 1",
-            description: "Description 1",
-            createdAt: new Date(),
-            updatedAt: new Date()
-        },
-        {
-            id: 2,
-            name: "Deck 2",
-            description: "Description 2",
-            createdAt: new Date(),
-            updatedAt: new Date()
-        },
-        {
-            id: 3,
-            name: "Deck 3",
-            description: "Description 3",
-            createdAt: new Date(),
-            updatedAt: new Date()
-        }
-    ];
+    const [decks, setDecks] = useState<DeckType[]>([])
+    const {getAllItems}  = useDeckResource()
+
+    // TODO useQuery
+    useEffect(() => {
+        getAllItems([ResourceQuery.orderAsc('id')]).then((items) => {
+            setDecks(items.data)
+            console.log(items.data)
+        })  
+    }, [])
 
     return (
         <>
-            {fakeDecks.map((deck) => (
+            {decks && decks.map((deck) => (
                 <DeckCard key={deck.id} item={deck} />
             ))}
         </>
