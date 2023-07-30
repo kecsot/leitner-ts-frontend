@@ -65,7 +65,7 @@ export const useBaseResource = <B extends IBaseModel, T extends BaseType> (colle
             let getItems = () => {
                 getList(page, limit, queries).then((response) => {
                     result.push(...response.data);
-                    if (response.data.length === limit) {
+                    if (response.total !== result.length)  {
                         page++;
                         getItems();
                     } else {
