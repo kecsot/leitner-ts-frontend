@@ -1,27 +1,19 @@
 
-import { useEffect, useState } from "react";
 import { useDeckResource } from "../../api/resource";
-import { DeckType } from "../../api/types";
 import { DeckCard } from "../../components/deck/DeckCard";
-import { ResourceQuery } from "../../api/resource/base/ResourceQuery";
+import { useQuery } from "react-query";
 
 
 export const DeckListContainer = () => {
-
-    const [decks, setDecks] = useState<DeckType[]>([])
     const {getAllItems}  = useDeckResource()
+    const {isLoading, error, data} = useQuery('decks', () => getAllItems())
 
-    // TODO useQuery
-    useEffect(() => {
-        getAllItems([ResourceQuery.orderAsc('id')]).then((items) => {
-            setDecks(items.data)
-            console.log(items.data)
-        })  
-    }, [])
+    // TODO: errorBoundary
 
     return (
         <>
-            {decks && decks.map((deck) => (
+            {isLoading && <p>Loading...</p>}
+            {data && data.data.map((deck) => (
                 <DeckCard key={deck.id} item={deck} />
             ))}
         </>
