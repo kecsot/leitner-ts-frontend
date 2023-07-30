@@ -1,8 +1,10 @@
-export const Decks = () => {
+import { DeckListContainer } from "../containers/deck/DeckListContainer";
+
+const Decks = () => {
     console.log("Decks");
 
     return (
-        <div>Decks</div>
+        <DeckListContainer/>
     )
 }
 
