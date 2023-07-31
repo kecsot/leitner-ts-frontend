@@ -1,12 +1,9 @@
-
-import { useDeckResource } from "../../api/resource";
 import { DeckCard } from "../../components/deck/DeckCard";
-import { useQuery } from "react-query";
+import { useDeckListQuery } from "../../queries/deck";
 
 
 export const DeckListContainer = () => {
-    const {getAllItems}  = useDeckResource()
-    const {isLoading, error, data} = useQuery('decks', () => getAllItems())
+    const {isLoading, error, data} = useDeckListQuery()
 
     // TODO: errorBoundary
 
