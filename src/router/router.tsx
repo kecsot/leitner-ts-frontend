@@ -1,20 +1,34 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import { Layout } from "../layouts/layout"
 import { routes } from "."
 
 export function Router() {
 
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path={routes.root.path} element={<Layout />}>
-                    <Route index Component={routes.root.component} />
-                    <Route path={routes.blog.root.path} Component={routes.blog.root.component} />
-                    <Route path={routes.contact.root.path} Component={routes.contact.root.component} />
-                    <Route path={routes.deck.root.path} Component={routes.deck.root.component} />
-                    <Route path={routes.default.path} Component={routes.default.component} />
-                </Route>
-            </Routes>
-        </BrowserRouter>
-    )
+    const router = createBrowserRouter([
+        {
+          path: routes.root.path,
+          element: <Layout />,
+          children: [
+            {
+                path: routes.blog.root.path,
+                Component: routes.blog.root.component
+            },
+            {
+                path: routes.contact.root.path,
+                Component: routes.contact.root.component,
+            },
+            {
+                path: routes.deck.root.path,
+                Component: routes.deck.root.component,
+            },
+            {
+                path: routes.default.path,
+                Component: routes.default.component,
+            },
+          ]
+        },
+
+      ]);
+
+      return <RouterProvider router={router} />
 }
