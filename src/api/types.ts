@@ -21,3 +21,9 @@ export type DeckModel = IBaseModel & {
     description: string;
 }
 export type DeckType = BaseType & DeckModel;
+
+export type CardModel = IBaseModel & {
+    name: string;
+    deckId: string;
+}
+export type CardType = BaseType & CardModel;
