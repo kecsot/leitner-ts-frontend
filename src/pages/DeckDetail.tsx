@@ -1,7 +1,12 @@
+import { useParams } from "react-router-dom"
+import { DeckDetailContainer } from "../containers/deck/DeckDetailContainer"
+
+
 const DeckDetail = () => {
+    const { id } = useParams();
 
     return (
-        <div>DeckDetail</div>
+        <DeckDetailContainer deckId={id!!}/>
     )
 }
 
