@@ -23,7 +23,7 @@ export type DeckModel = IBaseModel & {
 export type DeckType = BaseType & DeckModel;
 
 export type CardModel = IBaseModel & {
-    name: string;
+    text: string;
     deckId: string;
 }
 export type CardType = BaseType & CardModel;
