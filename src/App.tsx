@@ -1,6 +1,8 @@
 import {QueryClient, QueryClientProvider} from "react-query"
 import {Router} from "./router/router"
 import {ErrorBoundary} from "react-error-boundary";
+import {CssBaseline, ThemeProvider} from "@mui/material";
+import theme from "./theme/theme.ts";
 
 function App() {
     const queryClient = new QueryClient()
@@ -13,11 +15,14 @@ function App() {
     })
 
     return (
-        <QueryClientProvider client={queryClient}>
-            <ErrorBoundary fallback={<div>Something went wrong</div>}>
-                <Router/>
-            </ErrorBoundary>
-        </QueryClientProvider>
+        <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <QueryClientProvider client={queryClient}>
+                <ErrorBoundary fallback={<div>Something went wrong</div>}>
+                    <Router/>
+                </ErrorBoundary>
+            </QueryClientProvider>
+        </ThemeProvider>
     )
 }
 
