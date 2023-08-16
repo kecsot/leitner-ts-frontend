@@ -1,14 +1,6 @@
-import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom"
-import { Layout } from "../layouts/layout"
-import { ElementType, Suspense, lazy } from "react";
-
-const LazyHome = lazy(() => import("../pages/Home"));
-const LazyBlogs = lazy(() => import("../pages/Blogs"));
-const LazyContact = lazy(() => import("../pages/Contact"));
-const LazyDecks = lazy(() => import("../pages/Decks"));
-const LazyDeckDetail = lazy(() => import("../pages/DeckDetail"));
-const LazyPage404 = lazy(() => import("../pages/Page404"));
-
+import {Navigate, RouterProvider, createBrowserRouter} from "react-router-dom"
+import {Layout} from "../layouts/layout"
+import {ElementType, Suspense, lazy} from "react";
 
 export const SuspenseWrapper = (Element: ElementType) => (props: any) => (
     <Suspense fallback={<div>Loading...</div>}>
@@ -16,42 +8,47 @@ export const SuspenseWrapper = (Element: ElementType) => (props: any) => (
     </Suspense>
 );
 
-
+const HomeComponent = SuspenseWrapper(lazy(() => import("../pages/Home")));
+const BlogsComponent = SuspenseWrapper(lazy(() => import("../pages/Blogs")));
+const ContactComponent = SuspenseWrapper(lazy(() => import("../pages/Contact")));
+const DecksComponent = SuspenseWrapper(lazy(() => import("../pages/Decks")));
+const DeckDetailComponent = SuspenseWrapper(lazy(() => import("../pages/DeckDetail")));
+const Page404Component = SuspenseWrapper(lazy(() => import("../pages/Page404")));
 
 export function Router() {
 
     const router = createBrowserRouter([
         {
             path: '/',
-            element: <Layout />,
+            element: <Layout/>,
             children: [
                 {
                     path: 'home',
-                    Component: LazyHome
+                    Component: HomeComponent
                 }, {
                     path: 'blogs',
-                    Component: LazyBlogs
+                    Component: BlogsComponent
                 },
                 {
                     path: 'contact',
-                    Component: LazyContact,
+                    Component: ContactComponent,
                 },
                 {
                     path: 'decks',
                     children: [
-                        { element: <Navigate to='/decks/list' replace />, index: true },
-                        { path: 'list', Component: LazyDecks },
-                        { path: 'detail/:id', Component: LazyDeckDetail }
+                        {element: <Navigate to='/decks/list' replace/>, index: true},
+                        {path: 'list', Component: DecksComponent},
+                        {path: 'detail/:id', Component: DeckDetailComponent}
                     ]
                 },
                 {
                     path: '*',
-                    Component: LazyPage404,
+                    Component: Page404Component,
                 }
             ]
         },
 
     ]);
 
-    return <RouterProvider router={router} />
+    return <RouterProvider router={router}/>
 }
