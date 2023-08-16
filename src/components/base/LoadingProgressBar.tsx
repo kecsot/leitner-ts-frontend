@@ -1,10 +1,4 @@
-type Props = {
-    isLoading: boolean
-}
-
-export const LoadingProgressBar = ({ isLoading }: Props) => {
-
-    if (!isLoading) return null
+export const LoadingProgressBar = () => {
 
     return (
         <div>Loading...</div>
