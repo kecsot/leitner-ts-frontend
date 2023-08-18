@@ -10,6 +10,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import React from "react";
 import {Link} from "react-router-dom";
 import {DRAWER_WIDTH} from "../config.ts";
+import Typography from "@mui/material/Typography";
 
 type NavList = {
     name: string
@@ -22,7 +23,7 @@ type NavItem = {
     icon: React.ReactNode
 }
 
-const navList: NavList[] = [
+const navLists: NavList[] = [
     {
         name: "Dashboard",
         items: [
@@ -32,13 +33,63 @@ const navList: NavList[] = [
                 icon: <InboxIcon/>
             },
             {
-                name: 'Blog',
-                path: '/blogs',
+                name: "Decks",
+                path: "/decks",
                 icon: <InboxIcon/>
             },
             {
-                name: "Decks",
-                path: "/decks",
+                name: "Leitner Systems",
+                path: "/leitner-systems",
+                icon: <InboxIcon/>
+            },
+            {
+                name: "Notes",
+                path: "/notes",
+                icon: <InboxIcon/>
+            },
+        ]
+    },
+    {
+        name: "Community",
+        items: [
+            {
+                name: "Shared Decks",
+                path: "/store/decks",
+                icon: <InboxIcon/>
+            },
+            {
+                name: "Shared Leitner Systems",
+                path: "/store/leitner-systems",
+                icon: <InboxIcon/>
+            }
+        ]
+    },
+    {
+        name: "Your account",
+        items: [
+            {
+                name: "Achievements",
+                path: "/achievements",
+                icon: <InboxIcon/>
+            },
+            {
+                name: "Profile",
+                path: "/profile",
+                icon: <InboxIcon/>
+            }
+        ]
+    },
+    {
+        name: "Other",
+        items: [
+            {
+                name: "Terms of Use",
+                path: "/terms-of-use",
+                icon: <InboxIcon/>
+            },
+            {
+                name: "Privacy Policy",
+                path: "/privacy-policy",
                 icon: <InboxIcon/>
             },
             {
@@ -65,13 +116,18 @@ export default function NavDrawer() {
             anchor="left">
             <Toolbar/>
 
-            {navList.map((navList) => (
-                <List key={navList.name}>
+            {navLists.map((list) => (
+                <List key={list.name}>
                     <Divider/>
-                    {navList.items.map((item) => (
+                    <ListItem>
+                        <Typography variant="caption" color='text.secondary'>
+                            {list.name}
+                        </Typography>
+                    </ListItem>
+
+                    {list.items.map((item) => (
                         <ListItem key={item.name} disablePadding>
                             <ListItemButton component={Link} to={item.path}>
-
                                 <ListItemIcon>
                                     {item.icon}
                                 </ListItemIcon>
