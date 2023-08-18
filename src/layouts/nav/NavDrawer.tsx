@@ -53,13 +53,13 @@ const navLists: NavList[] = [
         name: "Community",
         items: [
             {
-                name: "Shared Decks",
-                path: "/store/decks",
+                name: "Deck Store",
+                path: "/community/store/decks",
                 icon: <InboxIcon/>
             },
             {
-                name: "Shared Leitner Systems",
-                path: "/store/leitner-systems",
+                name: "Leitner Systems Store",
+                path: "/community/store/leitner-systems",
                 icon: <InboxIcon/>
             }
         ]
@@ -69,12 +69,12 @@ const navLists: NavList[] = [
         items: [
             {
                 name: "Achievements",
-                path: "/achievements",
+                path: "account/achievements",
                 icon: <InboxIcon/>
             },
             {
                 name: "Profile",
-                path: "/profile",
+                path: "account/profile",
                 icon: <InboxIcon/>
             }
         ]
@@ -84,17 +84,17 @@ const navLists: NavList[] = [
         items: [
             {
                 name: "Terms of Use",
-                path: "/terms-of-use",
+                path: "other/terms-of-use",
                 icon: <InboxIcon/>
             },
             {
                 name: "Privacy Policy",
-                path: "/privacy-policy",
+                path: "other/privacy-policy",
                 icon: <InboxIcon/>
             },
             {
                 name: "Contact",
-                path: "/contact",
+                path: "other/contact",
                 icon: <InboxIcon/>
             }
         ]
