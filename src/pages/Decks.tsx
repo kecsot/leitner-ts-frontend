@@ -1,10 +1,19 @@
-import { DeckListContainer } from "../containers/deck/DeckListContainer";
+import {Container, Stack} from "@mui/material";
+import {DeckListContainer} from "../containers/deck/DeckListContainer";
+import {Helmet} from "react-helmet";
 
 const Decks = () => {
-    console.log("Decks");
 
     return (
-        <DeckListContainer/>
+        <Container>
+            <Helmet>
+                <title>Decks</title>
+            </Helmet>
+
+            <Stack spacing={2} direction="row">
+                <DeckListContainer/>
+            </Stack>
+        </Container>
     )
 }
 

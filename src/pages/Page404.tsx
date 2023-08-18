@@ -1,9 +1,16 @@
+import {Container} from "@mui/material";
+import {Helmet} from "react-helmet";
 
 const Page404 = () => {
-    console.log("Page404");
 
     return (
-        <div>Page404</div>
+        <Container>
+            <Helmet>
+                <title>Page Not Found</title>
+            </Helmet>
+
+            <div>404</div>
+        </Container>
     )
 }
 

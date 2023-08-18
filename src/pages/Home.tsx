@@ -1,10 +1,17 @@
+import {Container} from "@mui/material";
+import {Helmet} from "react-helmet";
 
 
- const Home = () => {
-    console.log("Home");
+const Home = () => {
 
     return (
-        <div>Home</div>
+        <Container>
+            <Helmet>
+                <title>Home</title>
+            </Helmet>
+
+            <div>Home</div>
+        </Container>
     )
 }
 
