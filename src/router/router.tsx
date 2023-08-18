@@ -1,5 +1,5 @@
 import {Navigate, RouterProvider, createBrowserRouter} from "react-router-dom"
-import {Layout} from "../layouts/layout"
+import Layout from "../layouts/Layout.tsx"
 import {ElementType, Suspense, lazy} from "react";
 
 export const SuspenseWrapper = (Element: ElementType) => (props: any) => (
