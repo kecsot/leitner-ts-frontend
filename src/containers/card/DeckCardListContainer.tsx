@@ -1,8 +1,9 @@
-import {LoadingProgressBar} from "../../components/base/LoadingProgressBar";
-import {useCardListQuery} from "../../queries/card";
-import {ResourceQuery} from "../../api/resource/base/ResourceQuery";
+import {LoadingProgressBar} from "../../components/base/LoadingProgressBar.tsx";
+import {useCardListQuery} from "../../queries/card.ts";
+import {ResourceQuery} from "../../api/resource/base/ResourceQuery.ts";
 import {useErrorBoundary} from "react-error-boundary";
 import Page404 from "../../pages/Page404.tsx";
+import {CardList} from "../../components/card/CardList.tsx";
 
 type Props = {
     deckId: string
@@ -17,13 +18,6 @@ export const DeckCardListContainer = ({deckId}: Props) => {
     if (!data) return <Page404/>
 
     return (
-        <div>
-            {data.data.map((card) => (
-                <div key={card.id}>
-                    <div>{card.id}</div>
-                    <div>{card.text}</div>
-                </div>
-            ))}
-        </div>
+        <CardList items={data.data}/>
     )
 }
