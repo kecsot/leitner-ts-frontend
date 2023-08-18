@@ -1,5 +1,5 @@
 import { DeckType } from "../../api/types"
-import { DeckListItem } from "./DeckListItem"
+import { DeckItem } from "./DeckItem.tsx"
 
 type Props = {
     items: DeckType[]
@@ -11,7 +11,7 @@ export const DeckList = ({ items, onViewItem: onItemView }: Props) => {
     return (
         <>
             {items.map((deck) => (
-                <DeckListItem
+                <DeckItem
                     key={deck.id}
                     item={deck}
                     onClick={() => onItemView(deck)} />

@@ -1,20 +1,22 @@
 import { DeckType } from "../../api/types"
-import {Card, CardContent, CardHeader} from "@mui/material";
+import {Card, CardActions, CardContent, CardHeader} from "@mui/material";
 
 type Props = {
     item: DeckType
+    onClick: () => void
 }
 
-export const DeckDefaultDetail = ({item}: Props) => {
+export const DeckItem = ({item, onClick}: Props) => {
 
     return (
         <Card>
             <CardHeader title={item.name} />
             <CardContent>
                 <div>{item.description}</div>
-                <div>{item.createdAt.toISOString()}</div>
-                <div>{item.updatedAt.toISOString()}</div>
             </CardContent>
+            <CardActions>
+                <button onClick={onClick}>View</button>
+            </CardActions>
         </Card>
     )
 }
