@@ -1,17 +1,18 @@
 import {Container} from "@mui/material";
 import {Helmet} from "react-helmet";
 
-const Blogs = () => {
+
+const LeitnerSystemStore = () => {
 
     return (
         <Container>
             <Helmet>
-                <title>Blogs</title>
+                <title>LeitnerSystemStore</title>
             </Helmet>
 
-            <div>Blogs</div>
+            <div>LeitnerSystemStore</div>
         </Container>
     )
 }
 
-export default Blogs
+export default LeitnerSystemStore;

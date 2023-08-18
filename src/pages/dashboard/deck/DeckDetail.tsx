@@ -1,7 +1,7 @@
 import {useParams} from "react-router-dom"
-import {DeckDetailContainer} from "../containers/deck/DeckDetailContainer"
-import {DeckCardListContainer} from "../containers/card/DeckCardListContainer.tsx";
-import Page404 from "./Page404.tsx";
+import {DeckDetailContainer} from "../../../containers/deck/DeckDetailContainer.tsx"
+import {DeckCardListContainer} from "../../../containers/card/DeckCardListContainer.tsx";
+import Page404 from "../../Page404.tsx";
 import {Container} from "@mui/material";
 import {Helmet} from "react-helmet";
 

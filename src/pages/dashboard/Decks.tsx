@@ -1,5 +1,5 @@
 import {Container, Stack} from "@mui/material";
-import {DeckListContainer} from "../containers/deck/DeckListContainer";
+import {DeckListContainer} from "../../containers/deck/DeckListContainer.tsx";
 import {Helmet} from "react-helmet";
 
 const Decks = () => {
@@ -10,7 +10,7 @@ const Decks = () => {
                 <title>Decks</title>
             </Helmet>
 
-            <Stack spacing={2} direction="row">
+            <Stack spacing={2}>
                 <DeckListContainer/>
             </Stack>
         </Container>

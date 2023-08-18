@@ -2,17 +2,17 @@ import {Container} from "@mui/material";
 import {Helmet} from "react-helmet";
 
 
-const Contact = () => {
+const DeckStore = () => {
 
     return (
         <Container>
             <Helmet>
-                <title>Contact</title>
+                <title>DeckStore</title>
             </Helmet>
 
-            <div>Comtact</div>
+            <div>DeckStore</div>
         </Container>
     )
 }
 
-export default Contact;
+export default DeckStore;
