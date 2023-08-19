@@ -3,6 +3,7 @@ import {Router} from "./router/router"
 import {ErrorBoundary} from "react-error-boundary";
 import {CssBaseline, ThemeProvider} from "@mui/material";
 import theme from "./theme/theme.ts";
+import {ReactQueryDevtools} from "react-query/devtools";
 
 function App() {
     const queryClient = new QueryClient()
@@ -21,6 +22,8 @@ function App() {
                 <ErrorBoundary fallback={<div>Something went wrong</div>}>
                     <Router/>
                 </ErrorBoundary>
+
+                <ReactQueryDevtools initialIsOpen={false}/>
             </QueryClientProvider>
         </ThemeProvider>
     )
