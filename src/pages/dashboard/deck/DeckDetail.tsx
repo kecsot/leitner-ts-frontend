@@ -16,8 +16,8 @@ const DeckDetail = () => {
                 <title>Deck detail</title>
             </Helmet>
 
-            <DeckDetailContainer deckId={id}/>
-            <DeckCardListContainer deckId={id}/>
+            <DeckDetailContainer deckId={Number(id)}/>
+            <DeckCardListContainer deckId={Number(id)}/>
         </Container>
     )
 }

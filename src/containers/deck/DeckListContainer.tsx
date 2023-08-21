@@ -1,10 +1,10 @@
 import {useNavigate} from "react-router-dom";
 import {DeckList} from "../../components/deck/DeckList";
-import {useDeckListQuery} from "../../queries/deck";
-import {DeckType} from "../../api/types";
+import {useDeckListQuery} from "../../api/queries/deck";
 import {LoadingProgressBar} from "../../components/base/LoadingProgressBar";
 import Page404 from "../../pages/Page404.tsx";
 import {useErrorBoundary} from "react-error-boundary";
+import {DeckType} from "../../@types/deck.ts";
 
 export const DeckListContainer = () => {
     const {showBoundary} = useErrorBoundary()
@@ -21,7 +21,7 @@ export const DeckListContainer = () => {
 
     return (
         <DeckList
-            items={data.data}
+            items={data}
             onViewItem={onItemClicked}/>
     )
 }

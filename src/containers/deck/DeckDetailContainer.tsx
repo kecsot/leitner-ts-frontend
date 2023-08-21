@@ -1,11 +1,11 @@
 import {LoadingProgressBar} from "../../components/base/LoadingProgressBar";
 import {DeckDefaultDetail} from "../../components/deck/DeckDefaultCard";
-import {useDeckQuery} from "../../queries/deck";
+import {useDeckQuery} from "../../api/queries/deck";
 import Page404 from "../../pages/Page404.tsx";
 import {useErrorBoundary} from "react-error-boundary";
 
 type Props = {
-    deckId: string
+    deckId: number
 }
 
 export const DeckDetailContainer = ({deckId}: Props) => {
