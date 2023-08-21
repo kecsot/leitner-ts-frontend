@@ -8,8 +8,8 @@ const wait = (ms: number) => {
     })
 }
 
-export const getDeckCardList = async (deckId: number) => {
-    console.log('fetchDeck')
+export const fetchDeckCards = async (deckId: number) => {
+    console.log('fetchDeckCards')
     await wait(500)
     return [
         {

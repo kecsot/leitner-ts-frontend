@@ -1,5 +1,5 @@
 import {useQuery} from "react-query"
-import {getDeckCardList} from "../deckCard.ts";
+import {fetchDeckCards} from "../deckCard.ts";
 
 
 export const DECK_CARD_QUERY_KEYS = {
@@ -12,6 +12,6 @@ export const DECK_CARD_QUERY_KEYS = {
 export const useDeckCardListQuery = (deckId: number) => {
     return useQuery({
         queryKey: DECK_CARD_QUERY_KEYS.list({deckId}),
-        queryFn: () => getDeckCardList(deckId),
+        queryFn: () => fetchDeckCards(deckId),
     })
 }
