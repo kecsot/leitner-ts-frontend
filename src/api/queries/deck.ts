@@ -1,5 +1,7 @@
-import {useQuery} from "react-query"
-import {fetchAllDeck, fetchDeck} from "../deck.ts";
+import {useQuery, UseQueryResult} from "react-query"
+import {fetchAllDeck, fetchDeck, fetchDeckList} from "../deck.ts";
+import {DeckType} from "../../@types/deck.ts";
+import {Pagination, PaginationRequestParams} from "../../@types/base.ts";
 
 export const DECK_QUERY_KEYS = {
     list: (filters = {}) => ['decks', 'list', {filters}],
@@ -13,7 +15,12 @@ export const useDeckQuery = (deckId: number) => useQuery({
     queryFn: () => fetchDeck(deckId),
 })
 
-export const useDeckListQuery = () => useQuery({
+export const useAllDeckQuery = () => useQuery({
     queryKey: DECK_QUERY_KEYS.list(),
     queryFn: fetchAllDeck,
+})
+
+export const useDeckListQuery = (params: PaginationRequestParams) : UseQueryResult<Pagination<DeckType>>  => useQuery({
+    queryKey: DECK_QUERY_KEYS.list({params}),
+    queryFn: () => fetchDeckList(params)
 })
