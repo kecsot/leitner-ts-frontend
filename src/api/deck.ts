@@ -32,3 +32,13 @@ export const fetchAllDeck = async () => {
     await wait(1000)
     return DATA;
 }
+
+export const fetchDeckList =  async (params: {page: number, limit: number}): Promise<{total: number, data: DeckType[]}> => {
+    console.log('fetchDeckList', params)
+    const {page, limit} = params;
+    console.log(params)
+    return {
+        total: DATA.length,
+        data: DATA.slice((page-1) * limit, (page ) * limit)
+    }
+}
