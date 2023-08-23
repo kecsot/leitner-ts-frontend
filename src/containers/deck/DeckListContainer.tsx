@@ -5,11 +5,17 @@ import {LoadingProgressBar} from "../../components/base/LoadingProgressBar";
 import Page404 from "../../pages/Page404.tsx";
 import {useErrorBoundary} from "react-error-boundary";
 import {DeckType} from "../../@types/deck.ts";
+import {useCustomPaginationProps} from "../../hook/useCustomPaginationProps.ts";
+import {CustomPagination} from "../../components/base/CustomPagination.tsx";
 
 export const DeckListContainer = () => {
     const {showBoundary} = useErrorBoundary()
     const navigate = useNavigate();
-    const {isLoading, isError, error, data} = useDeckListQuery()
+
+    const paginationProps = useCustomPaginationProps({
+        itemsPerPage: 10
+    })
+    const {isLoading, isError, error, data} = useDeckListQuery(paginationProps.paginationRequestParams)
 
     const onItemClicked = (deck: DeckType) => {
         navigate('/decks/detail/' + deck.id)
@@ -20,8 +26,15 @@ export const DeckListContainer = () => {
     if (!data) return <Page404/>
 
     return (
-        <DeckList
-            items={data}
-            onViewItem={onItemClicked}/>
+        <>
+            <CustomPagination
+                total={data.total}
+                {...paginationProps.tablePaginationProps}
+            />
+            <DeckList
+                items={data.data}
+                onViewItem={onItemClicked}
+            />
+        </>
     )
 }
