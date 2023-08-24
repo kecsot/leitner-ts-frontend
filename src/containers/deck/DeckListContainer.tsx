@@ -29,7 +29,7 @@ export const DeckListContainer = () => {
         <>
             <CustomPagination
                 total={data.total}
-                {...paginationProps.tablePaginationProps}
+                {...paginationProps.paginationProps}
             />
             <DeckList
                 items={data.data}
