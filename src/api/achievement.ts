@@ -7,6 +7,7 @@ for (let i = 0; i < 30; i++) {
 
     DATA.push({
         id: i,
+        key: `achievement-${i}`,
         name: `Achievement ${i}`,
         description: 'This is a achievement',
         acquired: isAcquired,
