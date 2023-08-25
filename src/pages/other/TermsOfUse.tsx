@@ -1,7 +1,9 @@
 import {Container} from "@mui/material";
 import {Helmet} from "react-helmet";
+import {PageContentContainer} from "../../containers/pageContent/PageContentContainer.tsx";
 
 const TermsOfUse = () => {
+    const key = import.meta.env.VITE_CONTENT_KEY_TERMS_OF_USE || 'terms-of-use'
 
     return (
         <Container>
@@ -9,7 +11,7 @@ const TermsOfUse = () => {
                 <title>Terms of use</title>
             </Helmet>
 
-            <div>Terms of use</div>
+            <PageContentContainer contentKey={key}/>
         </Container>
     )
 }
