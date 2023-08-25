@@ -1,7 +1,8 @@
-import {useQuery, UseQueryResult} from "react-query"
+import {useQuery} from "react-query"
 import {fetchDeckCardList} from "../deckCard.ts";
 import {Pagination, PaginationRequestParams} from "../../@types/base.ts";
 import {CardType} from "../../@types/card.ts";
+import {UseQueryOptions} from "react-query/types/react/types";
 
 
 export const DECK_CARD_QUERY_KEYS = {
@@ -11,9 +12,10 @@ export const DECK_CARD_QUERY_KEYS = {
     details: ['deck-cards', 'detail'],
 }
 
-export const useDeckCardListQuery = (deckId: number, params: PaginationRequestParams): UseQueryResult<Pagination<CardType>> => {
+export const useDeckCardListQuery = (deckId: number, params: PaginationRequestParams, options?: UseQueryOptions<Pagination<CardType>>) => {
     return useQuery({
         queryKey: DECK_CARD_QUERY_KEYS.list({deckId, params}),
-        queryFn: () => fetchDeckCardList(deckId, params),
+        queryFn: () => fetchDeckCardList(deckId, params).then((data) => data as Pagination<CardType>),
+        ...options
     })
 }

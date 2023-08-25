@@ -29,6 +29,6 @@ export const useTablePaginationProps = ({defaultPage, defaultRowsPerPage}: Props
 
     return {
         tablePaginationProps,
-        paginationRequestParams
+        requestProps: paginationRequestParams
     }
 }

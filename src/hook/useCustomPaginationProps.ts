@@ -10,7 +10,7 @@ type Props = {
 export const useCustomPaginationProps = ({defaultPage = 1, itemsPerPage}: Props) => {
     const [page, setPage] = useState<number>(defaultPage)
 
-    const paginationProps = useMemo(() => {
+    const props = useMemo(() => {
         return {
             page,
             itemsPerPage,
@@ -18,7 +18,7 @@ export const useCustomPaginationProps = ({defaultPage = 1, itemsPerPage}: Props)
         } as Omit<CustomPaginationProps, 'total'>
     }, [page, itemsPerPage])
 
-    const paginationRequestParams: PaginationRequestParams = useMemo(() => {
+    const requestProps: PaginationRequestParams = useMemo(() => {
         return {
             page,
             limit: itemsPerPage
@@ -26,7 +26,7 @@ export const useCustomPaginationProps = ({defaultPage = 1, itemsPerPage}: Props)
     }, [page, itemsPerPage])
 
     return {
-        paginationProps,
-        paginationRequestParams
+        props,
+        requestProps
     }
 }
