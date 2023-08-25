@@ -1,5 +1,6 @@
 import {Container} from "@mui/material";
 import {Helmet} from "react-helmet";
+import {AchievementListContainer} from "../../containers/achievement/AchievementListContainer.tsx";
 
 const Achievements = () => {
 
@@ -9,7 +10,7 @@ const Achievements = () => {
                 <title>Achievements</title>
             </Helmet>
 
-            <div>Achievements</div>
+            <AchievementListContainer/>
         </Container>
     )
 }
