@@ -2,29 +2,25 @@ import {CardType} from "../@types/card.ts";
 
 // TODO: Implement real API calls
 
-const wait = (ms: number) => {
-    return new Promise((resolve) => {
-        setTimeout(resolve, ms)
-    })
+
+const DATA = [] as CardType[];
+for (let i = 0; i < 1000; i++) {
+    DATA.push({
+        id: i,
+        text: `Card ${i}`,
+        deckId: Math.floor(Math.random() * 100),
+        createdAt: new Date(),
+        updatedAt: new Date(),
+    } as CardType)
 }
 
-export const fetchDeckCards = async (deckId: number) => {
-    console.log('fetchDeckCards')
-    await wait(500)
-    return [
-        {
-            id: 1,
-            text: `Card 1 (deckId: ${deckId})`,
-            deckId: deckId,
-            createdAt: new Date(),
-            updatedAt: new Date(),
-        } as CardType,
-        {
-            id: 2,
-            text: `Card 2 (deckId: ${deckId})`,
-            deckId: deckId,
-            createdAt: new Date(),
-            updatedAt: new Date(),
-        }
-    ]
+export const fetchDeckCardList = async (deckId: number, params: { page: number, limit: number }): Promise<{ total: number, data: CardType[] }> => {
+    console.log('fetchDeckCardList', params)
+    const {page, limit} = params;
+    const list = DATA.filter((item) => item.deckId === deckId)
+    return {
+        total: list.length,
+        data: list
+            .slice((page - 1) * limit, (page) * limit)
+    }
 }

@@ -20,7 +20,7 @@ export const useAllDeckQuery = () => useQuery({
     queryFn: fetchAllDeck,
 })
 
-export const useDeckListQuery = (params: PaginationRequestParams) : UseQueryResult<Pagination<DeckType>>  => useQuery({
+export const useDeckListQuery = (params: PaginationRequestParams): UseQueryResult<Pagination<DeckType>> => useQuery({
     queryKey: DECK_QUERY_KEYS.list({params}),
     queryFn: () => fetchDeckList(params)
 })
