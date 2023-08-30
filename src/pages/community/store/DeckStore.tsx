@@ -1,5 +1,6 @@
 import {Container} from "@mui/material";
 import {Helmet} from "react-helmet";
+import {DeckStoreListContainer} from "../../../containers/store/DeckStoreListContainer.tsx";
 
 
 const DeckStore = () => {
@@ -10,7 +11,7 @@ const DeckStore = () => {
                 <title>DeckStore</title>
             </Helmet>
 
-            <div>DeckStore</div>
+            <DeckStoreListContainer />
         </Container>
     )
 }
