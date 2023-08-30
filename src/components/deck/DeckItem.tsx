@@ -1,5 +1,6 @@
-import { DeckType } from "../../api/types"
+
 import {Card, CardActions, CardContent, CardHeader} from "@mui/material";
+import {DeckType} from "../../@types/deck.ts";
 
 type Props = {
     item: DeckType

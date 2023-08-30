@@ -1,5 +1,5 @@
-import { DeckType } from "../../api/types"
 import { DeckItem } from "./DeckItem.tsx"
+import {DeckType} from "../../@types/deck.ts";
 
 type Props = {
     items: DeckType[]
