@@ -1,20 +1,20 @@
 import {Container, Stack} from "@mui/material";
-import {DeckListContainer} from "../../containers/deck/DeckListContainer.tsx";
+import {BoxListContainer} from "../../containers/box/BoxListContainer.tsx";
 import {Helmet} from "react-helmet";
 
-const Decks = () => {
+const Boxes = () => {
 
     return (
         <Container>
             <Helmet>
-                <title>Decks</title>
+                <title>Boxes</title>
             </Helmet>
 
             <Stack spacing={2}>
-                <DeckListContainer/>
+                <BoxListContainer/>
             </Stack>
         </Container>
     )
 }
 
-export default Decks
+export default Boxes

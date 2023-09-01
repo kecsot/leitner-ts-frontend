@@ -1,13 +1,13 @@
 
 import {Card, CardActions, CardContent, CardHeader} from "@mui/material";
-import {DeckType} from "../../@types/deck.ts";
+import {BoxType} from "../../@types/box.ts";
 
 type Props = {
-    item: DeckType
+    item: BoxType
     onClick: () => void
 }
 
-export const DeckItem = ({item, onClick}: Props) => {
+export const BoxItem = ({item, onClick}: Props) => {
 
     return (
         <Card>

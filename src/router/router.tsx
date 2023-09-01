@@ -9,12 +9,12 @@ export const SuspenseWrapper = (Element: ElementType) => (props: any) => (
 );
 
 const HomeComponent = SuspenseWrapper(lazy(() => import("../pages/dashboard/Home.tsx")));
-const DecksComponent = SuspenseWrapper(lazy(() => import("../pages/dashboard/Decks.tsx")));
-const DeckDetailComponent = SuspenseWrapper(lazy(() => import("../pages/dashboard/deck/DeckDetail.tsx")));
+const BoxesComponent = SuspenseWrapper(lazy(() => import("../pages/dashboard/Boxes.tsx")));
+const BoxDetailComponent = SuspenseWrapper(lazy(() => import("../pages/dashboard/box/BoxDetail.tsx")));
 const LeitnerSystemsComponent = SuspenseWrapper(lazy(() => import("../pages/dashboard/LeitnerSystems.tsx")));
 const NotesComponent = SuspenseWrapper(lazy(() => import("../pages/dashboard/Notes.tsx")));
 
-const DeckStoreComponent = SuspenseWrapper(lazy(() => import("../pages/community/store/DeckStore.tsx")));
+const BoxStoreComponent = SuspenseWrapper(lazy(() => import("../pages/community/store/BoxStore.tsx")));
 const LeitnerSystemStoreComponent = SuspenseWrapper(lazy(() => import("../pages/community/store/LeitnerSystemStore.tsx")));
 
 const AchievementsComponent = SuspenseWrapper(lazy(() => import("../pages/account/Achievements.tsx")));
@@ -34,11 +34,11 @@ export function Router() {
             Component: HomeComponent,
         },
         {
-            path: 'decks',
+            path: 'boxes',
             children: [
-                {element: <Navigate to='/decks/list' replace/>, index: true},
-                {path: 'list', Component: DecksComponent},
-                {path: 'detail/:id', Component: DeckDetailComponent}
+                {element: <Navigate to='/boxes/list' replace/>, index: true},
+                {path: 'list', Component: BoxesComponent},
+                {path: 'detail/:id', Component: BoxDetailComponent}
             ]
         },
         {
@@ -53,8 +53,8 @@ export function Router() {
 
     const communityRoutes = [
         {
-            path: 'community/store/decks',
-            Component: DeckStoreComponent,
+            path: 'community/store/boxes',
+            Component: BoxStoreComponent,
         },
         {
             path: 'community/store/leitner-systems',

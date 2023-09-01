@@ -33,8 +33,8 @@ const navLists: NavList[] = [
                 icon: <InboxIcon/>
             },
             {
-                name: "Decks",
-                path: "/decks",
+                name: "Boxes",
+                path: "/boxes",
                 icon: <InboxIcon/>
             },
             {
@@ -53,8 +53,8 @@ const navLists: NavList[] = [
         name: "Community",
         items: [
             {
-                name: "Deck Store",
-                path: "/community/store/decks",
+                name: "Box Store",
+                path: "/community/store/boxes",
                 icon: <InboxIcon/>
             },
             {

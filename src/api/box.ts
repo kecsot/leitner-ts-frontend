@@ -1,18 +1,18 @@
-import {DeckType} from "../@types/deck.ts";
+import {BoxType} from "../@types/box.ts";
 
 // TODO: Implement real API calls
 
-const DATA = [] as DeckType[];
+const DATA = [] as BoxType[];
 for(let i = 0; i < 100; i++){
     DATA.push({
         id: i,
-        name: `Deck ${i}`,
-        description: 'This is a deck',
+        name: `Box ${i}`,
+        description: 'This is a box',
         numberOfCards: 10,
         dueCards: 5,
         createdAt: new Date(),
         updatedAt: new Date(),
-    } as DeckType)
+    } as BoxType)
 }
 
 const wait = (ms: number) => {
@@ -21,20 +21,20 @@ const wait = (ms: number) => {
     })
 }
 
-export const fetchDeck = async (id: number) => {
-    console.log('fetchDeck')
+export const fetchBox = async (id: number) => {
+    console.log('fetchBox')
     await wait(500)
     return DATA[id]
 }
 
-export const fetchAllDeck = async () => {
-    console.log('fetchAllDeck')
+export const fetchAllBox = async () => {
+    console.log('fetchAllBox')
     await wait(1000)
     return DATA;
 }
 
-export const fetchDeckList =  async (params: {page: number, limit: number}): Promise<{total: number, data: DeckType[]}> => {
-    console.log('fetchDeckList', params)
+export const fetchBoxList =  async (params: {page: number, limit: number}): Promise<{total: number, data: BoxType[]}> => {
+    console.log('fetchBoxList', params)
     const {page, limit} = params;
     console.log(params)
     return {

@@ -8,16 +8,16 @@ for (let i = 0; i < 1000; i++) {
     DATA.push({
         id: i,
         text: `Card ${i}`,
-        deckId: Math.floor(Math.random() * 100),
+        boxId: Math.floor(Math.random() * 100),
         createdAt: new Date(),
         updatedAt: new Date(),
     } as CardType)
 }
 
-export const fetchDeckCardList = async (deckId: number, params: { page: number, limit: number }): Promise<{ total: number, data: CardType[] }> => {
-    console.log('fetchDeckCardList', params)
+export const fetchBoxCardList = async (boxId: number, params: { page: number, limit: number }): Promise<{ total: number, data: CardType[] }> => {
+    console.log('fetchBoxCardList', params)
     const {page, limit} = params;
-    const list = DATA.filter((item) => item.deckId === deckId)
+    const list = DATA.filter((item) => item.boxId === boxId)
     return {
         total: list.length,
         data: list

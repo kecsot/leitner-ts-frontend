@@ -1,12 +1,12 @@
 
 import {Card, CardContent, CardHeader} from "@mui/material";
-import {DeckType} from "../../@types/deck.ts";
+import {BoxType} from "../../@types/box.ts";
 
 type Props = {
-    item: DeckType
+    item: BoxType
 }
 
-export const DeckDefaultDetail = ({item}: Props) => {
+export const BoxDefaultDetail = ({item}: Props) => {
 
     return (
         <Card>

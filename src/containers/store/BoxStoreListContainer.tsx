@@ -1,5 +1,5 @@
 import {StoreList} from "../../components/store/StoreList.tsx";
-import {DeckType} from "../../@types/deck.ts";
+import {BoxType} from "../../@types/box.ts";
 import {CustomPagination} from "../../components/base/CustomPagination.tsx";
 import {useCustomPaginationProps} from "../../hook/useCustomPaginationProps.ts";
 import {useStoreItemListQuery} from "../../api/queries/store.ts";
@@ -7,18 +7,18 @@ import {StorePaginationRequestParams, StoreType} from "../../@types/store.ts";
 import {useMemo} from "react";
 import {LoadingProgressBar} from "../../components/base/LoadingProgressBar.tsx";
 
-export const DeckStoreListContainer = () => {
+export const BoxStoreListContainer = () => {
     const pagination = useCustomPaginationProps({itemsPerPage: 10})
     const requestProps: StorePaginationRequestParams = useMemo(() => {
         return {
             ...pagination.requestProps,
-            type: StoreType.DECK
+            type: StoreType.BOX
         }
     }, [pagination.requestProps])
 
-    const {isLoading, data} = useStoreItemListQuery<DeckType>(requestProps, {useErrorBoundary: true})
+    const {isLoading, data} = useStoreItemListQuery<BoxType>(requestProps, {useErrorBoundary: true})
 
-    const renderItem = (item: DeckType) => {
+    const renderItem = (item: BoxType) => {
         return (
             <div>
                 <div>item id: {item.id}</div>

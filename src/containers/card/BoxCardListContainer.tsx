@@ -1,20 +1,20 @@
 import {LoadingProgressBar} from "../../components/base/LoadingProgressBar.tsx";
-import {useDeckCardListQuery} from "../../api/queries/deckCard.ts";
+import {useBoxCardListQuery} from "../../api/queries/boxCard.ts";
 import Page404 from "../../pages/Page404.tsx";
 import {CardList} from "../../components/card/CardList.tsx";
 import {CustomPagination} from "../../components/base/CustomPagination.tsx";
 import {useCustomPaginationProps} from "../../hook/useCustomPaginationProps.ts";
 
 type Props = {
-    deckId: number
+    boxId: number
 }
 
-export const DeckCardListContainer = ({deckId}: Props) => {
+export const BoxCardListContainer = ({boxId}: Props) => {
     const pagination = useCustomPaginationProps({
         itemsPerPage: 10
     })
 
-    const {isLoading, data} = useDeckCardListQuery(deckId, pagination.requestProps, {useErrorBoundary: true});
+    const {isLoading, data} = useBoxCardListQuery(boxId, pagination.requestProps, {useErrorBoundary: true});
 
     if (isLoading) return <LoadingProgressBar/>
     if (!data) return <Page404/>

@@ -1,6 +1,6 @@
 import {BaseType} from "./base.ts";
 
-export type DeckType = BaseType & {
+export type BoxType = BaseType & {
     name: string;
     description: string;
     numberOfCards: number;
