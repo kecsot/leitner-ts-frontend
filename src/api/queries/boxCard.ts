@@ -6,10 +6,12 @@ import {UseQueryOptions} from "react-query/types/react/types";
 
 
 export const BOX_CARD_QUERY_KEYS = {
-    list: (filters = {}) => ['box-cards', 'list', {filters}],
-    lists: ['box-cards', 'list'],
-    detail: (id: string) => ['box-cards', 'detail', id],
-    details: ['box-cards', 'detail'],
+    key: 'box-cards' as const,
+
+    list: (filters = {}) => [BOX_CARD_QUERY_KEYS.key, 'list', {filters}],
+    lists: () => [BOX_CARD_QUERY_KEYS.key, 'list'],
+    detail: (id: string) => [BOX_CARD_QUERY_KEYS.key, 'detail', id],
+    details: () => [BOX_CARD_QUERY_KEYS.key, 'detail'],
 }
 
 export const useBoxCardListQuery = (boxId: number, params: PaginationRequestParams, options?: UseQueryOptions<Pagination<CardType>>) => {

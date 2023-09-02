@@ -5,10 +5,12 @@ import {Pagination, PaginationRequestParams} from "../../@types/base.ts";
 import {UseQueryOptions} from "react-query/types/react/types";
 
 export const BOX_QUERY_KEYS = {
-    list: (filters = {}) => ['boxes', 'list', {filters}],
-    lists: ['boxes', 'list'],
-    detail: (id: number) => ['boxes', 'detail', id],
-    details: ['boxes', 'detail'],
+    key: 'boxes' as const,
+    
+    list: (filters = {}) => [BOX_QUERY_KEYS.key, 'list', {filters}],
+    lists: () => [BOX_QUERY_KEYS.key, 'list'],
+    detail: (id: number) => [BOX_QUERY_KEYS.key, 'detail', id],
+    details: () => [BOX_QUERY_KEYS.key, 'detail'],
 }
 
 export const useBoxQuery = (boxId: number, options?: UseQueryOptions<BoxType>) => useQuery({

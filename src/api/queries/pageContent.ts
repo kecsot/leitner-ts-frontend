@@ -4,7 +4,9 @@ import {fetchPageContent} from "../pageContent.ts";
 import {PageContentType} from "../../@types/pageContent.ts";
 
 export const PAGE_CONTENT_QUERY_KEYS = {
-    detail: (key: string) => ['page-content', key],
+    key: 'page-content' as const,
+
+    detail: (key: string) => [PAGE_CONTENT_QUERY_KEYS.key, key],
 }
 
 export const usePageContentQuery = (contentKey: string, options?: UseQueryOptions<PageContentType>) => {
