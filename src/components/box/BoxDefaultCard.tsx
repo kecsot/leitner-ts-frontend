@@ -13,6 +13,7 @@ export const BoxDefaultDetail = ({item}: Props) => {
             <CardHeader title={item.name} />
             <CardContent>
                 <div>{item.description}</div>
+                <div>{item.leitnerSystemId}</div>
                 <div>{item.createdAt.toISOString()}</div>
                 <div>{item.updatedAt.toISOString()}</div>
             </CardContent>

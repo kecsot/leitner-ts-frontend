@@ -1,5 +1,6 @@
 import {Container} from "@mui/material";
 import {Helmet} from "react-helmet";
+import {LeitnerSystemListContainer} from "../../containers/leitner/LeitnerSystemListContainer.tsx";
 
 
 const LeitnerSystems = () => {
@@ -10,7 +11,7 @@ const LeitnerSystems = () => {
                 <title>LeitnerSystems</title>
             </Helmet>
 
-            <div>LeitnerSystems</div>
+            <LeitnerSystemListContainer />
         </Container>
     )
 }

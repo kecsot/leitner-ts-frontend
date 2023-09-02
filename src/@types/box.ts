@@ -5,4 +5,5 @@ export type BoxType = BaseType & {
     description: string;
     numberOfCards: number;
     dueCards: number;
+    leitnerSystemId: number;
 };

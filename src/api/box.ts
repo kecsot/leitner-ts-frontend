@@ -10,6 +10,7 @@ for(let i = 0; i < 100; i++){
         description: 'This is a box',
         numberOfCards: 10,
         dueCards: 5,
+        leitnerSystemId: Math.floor(Math.random() * 100),
         createdAt: new Date(),
         updatedAt: new Date(),
     } as BoxType)
