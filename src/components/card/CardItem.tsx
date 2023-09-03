@@ -1,5 +1,5 @@
-import {CardType} from "../../api/types"
 import {Card, CardContent, CardHeader} from "@mui/material";
+import {CardType} from "../../@types/card.ts";
 
 type Props = {
     item: CardType

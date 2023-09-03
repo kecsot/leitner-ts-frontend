@@ -1,4 +1,3 @@
-
 import {Card, CardContent, CardHeader} from "@mui/material";
 import {BoxType} from "../../@types/box.ts";
 
