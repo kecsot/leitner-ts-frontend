@@ -1,4 +1,4 @@
-import {LoadingProgressBar} from "../../components/base/LoadingProgressBar";
+import {LoadingProgressBar} from "../../components/base/progressBar/LoadingProgressBar.tsx";
 import Page404 from "../../pages/Page404.tsx";
 import {usePageContentQuery} from "../../api/queries/pageContent.ts";
 import {PageContent} from "../../components/pageContent/PageContent.tsx";

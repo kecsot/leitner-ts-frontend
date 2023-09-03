@@ -1,11 +1,11 @@
 import {StoreList} from "../../components/store/StoreList.tsx";
 import {BoxType} from "../../@types/box.ts";
-import {CustomPagination} from "../../components/base/CustomPagination.tsx";
+import {CustomPagination} from "../../components/base/customPagination/CustomPagination.tsx";
 import {useCustomPaginationProps} from "../../hook/useCustomPaginationProps.ts";
 import {useStoreItemListQuery} from "../../api/queries/store.ts";
 import {StorePaginationRequestParams, StoreType} from "../../@types/store.ts";
 import {useMemo} from "react";
-import {LoadingProgressBar} from "../../components/base/LoadingProgressBar.tsx";
+import {LoadingProgressBar} from "../../components/base/progressBar/LoadingProgressBar.tsx";
 
 export const BoxStoreListContainer = () => {
     const pagination = useCustomPaginationProps({itemsPerPage: 10})

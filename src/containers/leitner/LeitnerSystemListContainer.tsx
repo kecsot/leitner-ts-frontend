@@ -1,7 +1,7 @@
-import {LoadingProgressBar} from "../../components/base/LoadingProgressBar";
+import {LoadingProgressBar} from "../../components/base/progressBar/LoadingProgressBar.tsx";
 import Page404 from "../../pages/Page404.tsx";
 import {useCustomPaginationProps} from "../../hook/useCustomPaginationProps.ts";
-import {CustomPagination} from "../../components/base/CustomPagination.tsx";
+import {CustomPagination} from "../../components/base/customPagination/CustomPagination.tsx";
 import {useLeitnerSystemListQuery} from "../../api/queries/leitner.ts";
 import {LeitnerSystemList} from "../../components/leitner/LeitnerSystemList.tsx";
 

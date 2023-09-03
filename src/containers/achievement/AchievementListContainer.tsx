@@ -1,5 +1,5 @@
 import Page404 from "../../pages/Page404.tsx";
-import {LoadingProgressBar} from "../../components/base/LoadingProgressBar.tsx";
+import {LoadingProgressBar} from "../../components/base/progressBar/LoadingProgressBar.tsx";
 import {useAchievementListQuery} from "../../api/queries/achievement.ts";
 import {AchievementList} from "../../components/achievement/AchievementList.tsx";
 

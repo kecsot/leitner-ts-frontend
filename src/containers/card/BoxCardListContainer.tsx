@@ -1,8 +1,8 @@
-import {LoadingProgressBar} from "../../components/base/LoadingProgressBar.tsx";
+import {LoadingProgressBar} from "../../components/base/progressBar/LoadingProgressBar.tsx";
 import {useBoxCardListQuery} from "../../api/queries/boxCard.ts";
 import Page404 from "../../pages/Page404.tsx";
 import {CardList} from "../../components/card/CardList.tsx";
-import {CustomPagination} from "../../components/base/CustomPagination.tsx";
+import {CustomPagination} from "../../components/base/customPagination/CustomPagination.tsx";
 import {useCustomPaginationProps} from "../../hook/useCustomPaginationProps.ts";
 
 type Props = {

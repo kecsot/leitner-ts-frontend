@@ -1,4 +1,4 @@
-import {LoadingProgressBar} from "../../components/base/LoadingProgressBar";
+import {LoadingProgressBar} from "../../components/base/progressBar/LoadingProgressBar.tsx";
 import {BoxDefaultDetail} from "../../components/box/BoxDefaultCard.tsx";
 import {useBoxQuery} from "../../api/queries/box.ts";
 import Page404 from "../../pages/Page404.tsx";
