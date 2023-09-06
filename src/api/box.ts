@@ -10,7 +10,7 @@ for(let i = 0; i < 100; i++){
         description: 'This is a box',
         numberOfCards: 10,
         dueCards: 5,
-        leitnerSystemId: Math.floor(Math.random() * 100),
+        leitnerSystemId: Math.floor(Math.random() * 20),
         createdAt: new Date(),
         updatedAt: new Date(),
     } as BoxType)
@@ -42,4 +42,18 @@ export const fetchBoxList =  async (params: {page: number, limit: number}): Prom
         total: DATA.length,
         data: DATA.slice((page-1) * limit, (page ) * limit)
     }
+}
+
+export const postBox = async (item: BoxType) => {
+    console.log('postBox', item)
+    await wait(1000)
+    DATA.push(item)
+    return item
+}
+
+export const patchBox = async (item: BoxType) => {
+    console.log('updateBox', item)
+    await wait(1000)
+    DATA[item.id].name = item.name
+    return item
 }

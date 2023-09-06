@@ -11,7 +11,8 @@ import {DefaultFormModes} from "../base/form/types.ts";
 type Props = {
     mode: DefaultFormModes
     item?: BoxType
-    leitnerSystems: LeitnerSystemType[]
+    leitnerSystems: LeitnerSystemType[],
+    onSubmit: (values: BoxType) => void
 }
 
 const BoxSchema = Yup.object().shape({
@@ -26,7 +27,7 @@ const BoxSchema = Yup.object().shape({
     leitnerSystemId: Yup.number().required('Required'),
 });
 
-export const BoxForm = ({mode, item, leitnerSystems}: Props) => {
+export const BoxForm = ({mode, item, leitnerSystems, onSubmit}: Props) => {
     const formik = useFormik({
         initialValues: {
             name: item?.name || '',
@@ -35,8 +36,17 @@ export const BoxForm = ({mode, item, leitnerSystems}: Props) => {
         },
         validationSchema: BoxSchema,
         onSubmit: values => {
-            // TODO: implement
-            console.log(values)
+            const data = {
+                name: values.name,
+                description: values.description,
+                leitnerSystemId: values.leitnerSystemId,
+            } as BoxType
+
+            if(mode === DefaultFormModes.EDIT && item) {
+                data.id = item.id
+            }
+
+            onSubmit(data)  // TODO: handle error
         },
     });
     return (
