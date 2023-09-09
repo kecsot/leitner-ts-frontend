@@ -55,11 +55,13 @@ const Boxes = () => {
                 <DialogContent>
                     {isCreateOperation && (
                         <BoxFormCreateContainer
+                            onSuccess={resetOperationSelection}
                             onCancel={resetOperationSelection}/>
                     )}
                     {isEditOperation && operationSelectedItem && (
                         <BoxFormEditContainer
                             boxId={operationSelectedItem.id}
+                            onSuccess={resetOperationSelection}
                             onCancel={resetOperationSelection}/>
                     )}
                     {isDeleteOperation && operationSelectedItem && (

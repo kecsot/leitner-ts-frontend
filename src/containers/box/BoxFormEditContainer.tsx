@@ -5,15 +5,17 @@ import {useBoxQuery, useBoxUpdateMutation} from "../../api/queries/box.ts";
 
 type Props = {
     boxId: number
+    onSuccess: () => void
     onCancel?: () => void
 }
 
-export const BoxFormEditContainer = ({boxId, onCancel}: Props) => {
+export const BoxFormEditContainer = ({boxId, onSuccess, onCancel}: Props) => {
     const boxQuery = useBoxQuery(boxId, {useErrorBoundary: true})
     const leitnerSystemsQuery = useAllLeitnerSystemQuery({useErrorBoundary: true})
 
     const updateMutation = useBoxUpdateMutation()
 
+    if (updateMutation.isSuccess) onSuccess()
     if (leitnerSystemsQuery.isLoading || boxQuery.isLoading) return <div>loading...</div>
     if (!leitnerSystemsQuery.data || !boxQuery.data) return null
 
