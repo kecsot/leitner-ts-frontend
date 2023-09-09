@@ -1,12 +1,11 @@
-import {BoxItem} from "./BoxItem.tsx"
+import {BoxItem, BoxItemEventProps} from "./BoxItem.tsx"
 import {BoxType} from "../../@types/box.ts";
 
-type Props = {
+type Props = BoxItemEventProps & {
     items: BoxType[]
-    onViewItem: (item: BoxType) => void
 }
 
-export const BoxList = ({items, onViewItem: onItemView}: Props) => {
+export const BoxList = ({items, ...rest}: Props) => {
 
     return (
         <>
@@ -14,7 +13,7 @@ export const BoxList = ({items, onViewItem: onItemView}: Props) => {
                 <BoxItem
                     key={box.id}
                     item={box}
-                    onClick={() => onItemView(box)}/>
+                    {...rest}/>
             ))}
         </>
     )

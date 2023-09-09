@@ -1,21 +1,28 @@
-import {Card, CardActions, CardContent, CardHeader} from "@mui/material";
+import {Button, Card, CardActions, CardContent, CardHeader} from "@mui/material";
 import {BoxType} from "../../@types/box.ts";
 
-type Props = {
-    item: BoxType
-    onClick: () => void
+export type BoxItemEventProps = {
+    onViewClick?: (item: BoxType) => void
+    onEditClick?: (item: BoxType) => void
+    onDeleteClick?: (item: BoxType) => void
 }
 
-export const BoxItem = ({item, onClick}: Props) => {
+type Props = BoxItemEventProps & {
+    item: BoxType
+}
+
+export const BoxItem = ({item, onViewClick, onEditClick, onDeleteClick}: Props) => {
 
     return (
         <Card>
-            <CardHeader title={item.name} />
+            <CardHeader title={item.name}/>
             <CardContent>
                 <div>{item.description}</div>
             </CardContent>
             <CardActions>
-                <button onClick={onClick}>View</button>
+                {onViewClick && <Button onClick={() => onViewClick(item)}>View</Button>}
+                {onEditClick && <Button onClick={() => onEditClick(item)}>Edit</Button>}
+                {onDeleteClick && <Button onClick={() => onDeleteClick(item)}>Delete</Button>}
             </CardActions>
         </Card>
     )

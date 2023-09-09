@@ -13,6 +13,7 @@ type Props = {
     item?: BoxType
     leitnerSystems: LeitnerSystemType[],
     onSubmit: (values: BoxType) => void
+    onCancel?: () => void
 }
 
 const BoxSchema = Yup.object().shape({
@@ -27,7 +28,7 @@ const BoxSchema = Yup.object().shape({
     leitnerSystemId: Yup.number().required('Required'),
 });
 
-export const BoxForm = ({mode, item, leitnerSystems, onSubmit}: Props) => {
+export const BoxForm = ({mode, item, leitnerSystems, onSubmit, onCancel}: Props) => {
     const formik = useFormik({
         initialValues: {
             name: item?.name || '',
@@ -42,11 +43,11 @@ export const BoxForm = ({mode, item, leitnerSystems, onSubmit}: Props) => {
                 leitnerSystemId: values.leitnerSystemId,
             } as BoxType
 
-            if(mode === DefaultFormModes.EDIT && item) {
+            if (mode === DefaultFormModes.EDIT && item) {
                 data.id = item.id
             }
 
-            onSubmit(data)  // TODO: handle error
+            return onSubmit(data)  // TODO: handle error
         },
     });
     return (
@@ -74,12 +75,27 @@ export const BoxForm = ({mode, item, leitnerSystems, onSubmit}: Props) => {
                     ))}
                 </CustomSelect>
 
-                <Button
-                    variant={'contained'}
-                    type="submit">
-                    {mode === DefaultFormModes.CREATE && 'Create'}
-                    {mode === DefaultFormModes.EDIT && 'Save'}
-                </Button>
+                <Stack
+                    direction='row'
+                    justifyContent='flex-end'
+                    spacing={2}>
+                    <Button
+                        disabled={formik.isSubmitting}
+                        variant={'contained'}
+                        type="submit">
+                        {mode === DefaultFormModes.CREATE && 'Create'}
+                        {mode === DefaultFormModes.EDIT && 'Save'}
+                    </Button>
+
+                    {onCancel && (
+                        <Button
+                            disabled={formik.isSubmitting}
+                            variant={'outlined'}
+                            onClick={onCancel}>
+                            Cancel
+                        </Button>
+                    )}
+                </Stack>
             </Stack>
         </form>
     );
