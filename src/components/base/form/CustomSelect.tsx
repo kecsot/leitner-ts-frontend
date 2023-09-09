@@ -16,6 +16,7 @@ export const CustomSelect = ({name, formik, children, ...rest}: Props) => {
             <Select
                 name={name}
                 error={isError}
+                variant='filled'
                 onChange={formik.handleChange}
                 value={formik.values[name]}
                 {...rest}

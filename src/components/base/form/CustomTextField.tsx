@@ -13,6 +13,7 @@ export const CustomTextField = ({name, formik, ...rest}: Props) => {
             <TextField
                 name={name}
                 error={isError}
+                variant="filled"
                 onChange={formik.handleChange}
                 value={formik.values[name]}
                 {...rest}
