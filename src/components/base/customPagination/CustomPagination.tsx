@@ -19,6 +19,11 @@ export const CustomPagination = ({total, itemsPerPage, ...other}: CustomPaginati
 
     return (
         <Pagination
+            sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+            }}
             count={Math.ceil(total / itemsPerPage)}
             {...other}/>
     )
