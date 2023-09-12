@@ -16,6 +16,7 @@ export const CustomTextField = ({name, formik, ...rest}: Props) => {
                 variant="filled"
                 onChange={formik.handleChange}
                 value={formik.values[name]}
+                disabled={formik.isSubmitting}
                 {...rest}
             />
             {isError && <FormHelperText error={isError}>{formik.errors[name]}</FormHelperText>}

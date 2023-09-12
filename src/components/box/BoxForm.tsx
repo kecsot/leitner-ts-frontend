@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 import {CustomTextField} from "../base/form/CustomTextField.tsx";
 import {CustomSelect} from "../base/form/CustomSelect.tsx";
 import {DefaultFormModes} from "../base/form/types.ts";
+import {CustomLoadingButton} from "../base/form/CustomLoadingButton.tsx";
 
 
 type Props = {
@@ -56,7 +57,8 @@ export const BoxForm = ({mode, item, leitnerSystems, onSubmit, onCancel}: Props)
                 <CustomTextField
                     name="name"
                     label="Deck name"
-                    formik={formik}/>
+                    formik={formik}
+                />
 
                 <CustomTextField
                     name="description"
@@ -79,13 +81,13 @@ export const BoxForm = ({mode, item, leitnerSystems, onSubmit, onCancel}: Props)
                     direction='row'
                     justifyContent='flex-end'
                     spacing={2}>
-                    <Button
-                        disabled={formik.isSubmitting}
+                    <CustomLoadingButton
                         variant={'contained'}
+                        formik={formik}
                         type="submit">
                         {mode === DefaultFormModes.CREATE && 'Create'}
                         {mode === DefaultFormModes.EDIT && 'Save'}
-                    </Button>
+                    </CustomLoadingButton>
 
                     {onCancel && (
                         <Button

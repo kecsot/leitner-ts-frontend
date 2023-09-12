@@ -19,6 +19,7 @@ export const CustomSelect = ({name, formik, children, ...rest}: Props) => {
                 variant='filled'
                 onChange={formik.handleChange}
                 value={formik.values[name]}
+                disabled={formik.isSubmitting}
                 {...rest}
             >
                 {children}
