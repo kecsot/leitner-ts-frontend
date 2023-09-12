@@ -1,6 +1,9 @@
-export type CustomFormProps = {
+export type CustomFormProps = FormikProps & {
     name: string
-    formik: any // TODO: formik type
+}
+
+export type FormikProps = {
+    formik: any // TODO: use useFormikContext hook instead of this
 }
 
 export enum DefaultFormModes {
