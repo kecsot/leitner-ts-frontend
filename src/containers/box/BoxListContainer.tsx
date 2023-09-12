@@ -12,8 +12,15 @@ export const BoxListContainer = ({...rest}: Props) => {
     const pagination = useCustomPaginationProps({
         itemsPerPage: 10
     })
-    const {isLoading, data} = useBoxListQuery(pagination.requestProps, {useErrorBoundary: true})
-
+    const {
+        isLoading,
+        data
+    } = useBoxListQuery(pagination.requestProps, {
+            useErrorBoundary: true,
+            keepPreviousData: true
+        }
+    )
+    
     if (isLoading) return <LoadingProgressBar/>
     if (!data) return <Page404/>
 

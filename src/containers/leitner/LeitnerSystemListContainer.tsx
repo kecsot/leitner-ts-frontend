@@ -9,7 +9,13 @@ export const LeitnerSystemListContainer = () => {
     const pagination = useCustomPaginationProps({
         itemsPerPage: 10
     })
-    const {isLoading, data} = useLeitnerSystemListQuery(pagination.requestProps, {useErrorBoundary: true})
+    const {
+        isLoading,
+        data
+    } = useLeitnerSystemListQuery(pagination.requestProps, {
+        useErrorBoundary: true,
+        keepPreviousData: true,
+    })
 
     if (isLoading) return <LoadingProgressBar/>
     if (!data) return <Page404/>

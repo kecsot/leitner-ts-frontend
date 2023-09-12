@@ -14,7 +14,13 @@ export const BoxCardListContainer = ({boxId}: Props) => {
         itemsPerPage: 10
     })
 
-    const {isLoading, data} = useBoxCardListQuery(boxId, pagination.requestProps, {useErrorBoundary: true});
+    const {
+        isLoading,
+        data
+    } = useBoxCardListQuery(boxId, pagination.requestProps, {
+        useErrorBoundary: true,
+        keepPreviousData: true,
+    });
 
     if (isLoading) return <LoadingProgressBar/>
     if (!data) return <Page404/>
