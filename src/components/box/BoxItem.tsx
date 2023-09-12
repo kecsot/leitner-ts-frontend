@@ -1,5 +1,6 @@
-import {Button, Card, CardActions, CardContent, CardHeader} from "@mui/material";
+import {Button, Card, CardActions, CardContent, CardHeader, Stack} from "@mui/material";
 import {BoxType} from "../../@types/box.ts";
+import Typography from "@mui/material/Typography";
 
 export type BoxItemEventProps = {
     onViewClick?: (item: BoxType) => void
@@ -13,16 +14,44 @@ type Props = BoxItemEventProps & {
 
 export const BoxItem = ({item, onViewClick, onEditClick, onDeleteClick}: Props) => {
 
+    const items: { label: string, value: string }[] = [
+        {label: 'Description', value: item.description},
+        {label: 'Total cards', value: item.numberOfCards.toString()},
+        {label: 'Cards to learn', value: item.dueCards.toString()},
+    ]
+
     return (
         <Card>
             <CardHeader title={item.name}/>
             <CardContent>
                 <div>{item.description}</div>
             </CardContent>
-            <CardActions>
-                {onViewClick && <Button onClick={() => onViewClick(item)}>View</Button>}
-                {onEditClick && <Button onClick={() => onEditClick(item)}>Edit</Button>}
-                {onDeleteClick && <Button onClick={() => onDeleteClick(item)}>Delete</Button>}
+            <CardActions
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'flex-end'
+                }}>
+                {onViewClick &&
+                    <Button
+                        variant={'contained'}
+                        onClick={() => onViewClick(item)}>
+                        View
+                    </Button>
+                }
+                {onEditClick &&
+                    <Button
+                        variant={'outlined'}
+                        onClick={() => onEditClick(item)}>
+                        Edit
+                    </Button>
+                }
+                {onDeleteClick &&
+                    <Button
+                        variant={'outlined'}
+                        onClick={() => onDeleteClick(item)}>
+                        Delete
+                    </Button>
+                }
             </CardActions>
         </Card>
     )
