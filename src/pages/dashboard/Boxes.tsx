@@ -7,6 +7,7 @@ import AddIcon from '@mui/icons-material/Add';
 import {useCrudOperation} from "../../hook/useCrudOperation.ts";
 import {BoxType} from "../../@types/box.ts";
 import {useNavigate} from "react-router-dom";
+import {BoxDeleteFormContainer} from "../../containers/box/BoxDeleteFormContainer.tsx";
 
 const Boxes = () => {
     const navigate = useNavigate()
@@ -65,7 +66,10 @@ const Boxes = () => {
                             onCancel={resetOperationSelection}/>
                     )}
                     {isDeleteOperation && operationSelectedItem && (
-                        <div></div> // TODO: implement delete
+                        <BoxDeleteFormContainer
+                            id={operationSelectedItem.id}
+                            onSuccess={resetOperationSelection}
+                            onCancel={resetOperationSelection}/>
                     )}
                 </DialogContent>
             </Dialog>

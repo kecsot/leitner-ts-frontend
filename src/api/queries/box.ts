@@ -1,5 +1,5 @@
 import {useMutation, useQuery, useQueryClient} from "react-query"
-import {fetchBox, fetchBoxList, postBox, patchBox} from "../box.ts";
+import {deleteBox, fetchBox, fetchBoxList, patchBox, postBox} from "../box.ts";
 import {BoxType} from "../../@types/box.ts";
 import {Pagination, PaginationRequestParams} from "../../@types/base.ts";
 import {UseQueryOptions} from "react-query/types/react/types";
@@ -46,6 +46,18 @@ export const useBoxUpdateMutation = () => {
         mutationFn: patchBox,
         onSuccess: async (data) => {
             queryClient.setQueryData(BOX_QUERY_KEYS.detail(data.id), data)
+            await queryClient.invalidateQueries(BOX_QUERY_KEYS.lists())
+        }
+    })
+}
+
+export const useBoxDeleteMutation = () => {
+    const queryClient = useQueryClient()
+
+    return useMutation({
+        mutationFn: deleteBox,
+        onSuccess: async (data, id) => {
+            queryClient.setQueryData(BOX_QUERY_KEYS.detail(id), data)
             await queryClient.invalidateQueries(BOX_QUERY_KEYS.lists())
         }
     })
