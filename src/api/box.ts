@@ -3,7 +3,7 @@ import {BoxType} from "../@types/box.ts";
 // TODO: Implement real API calls
 
 const DATA = [] as BoxType[];
-for(let i = 0; i < 100; i++){
+for (let i = 0; i < 100; i++) {
     DATA.push({
         id: i,
         name: `Box ${i}`,
@@ -34,13 +34,17 @@ export const fetchAllBox = async () => {
     return DATA;
 }
 
-export const fetchBoxList =  async (params: {page: number, limit: number}): Promise<{total: number, data: BoxType[]}> => {
+export const fetchBoxList = async (params: { page: number, limit: number }): Promise<{
+    total: number,
+    data: BoxType[]
+}> => {
     console.log('fetchBoxList', params)
     const {page, limit} = params;
     console.log(params)
+    await wait(1000)
     return {
         total: DATA.length,
-        data: DATA.slice((page-1) * limit, (page ) * limit)
+        data: DATA.slice((page - 1) * limit, (page) * limit)
     }
 }
 
@@ -56,4 +60,15 @@ export const patchBox = async (item: BoxType) => {
     await wait(1000)
     DATA[item.id].name = item.name
     return item
+}
+
+export const deleteBox = async (id: number) => {
+    console.log('deleteBox', id)
+    await wait(1000)
+    const index = DATA.findIndex((i) => i.id === id)
+    const found = index !== -1
+    if (found) {
+        DATA.splice(index, 1)
+    }
+    return found
 }
