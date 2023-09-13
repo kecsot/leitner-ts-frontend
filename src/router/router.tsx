@@ -1,9 +1,10 @@
-import {Navigate, RouterProvider, createBrowserRouter} from "react-router-dom"
+import {createBrowserRouter, Navigate, RouterProvider} from "react-router-dom"
 import Layout from "../layouts/Layout.tsx"
-import {ElementType, Suspense, lazy} from "react";
+import {ElementType, lazy, Suspense} from "react";
+import { LoadingProgressContent } from "../components/base/progressBar/LoadingProgressContent.tsx";
 
 export const SuspenseWrapper = (Element: ElementType) => (props: any) => (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<LoadingProgressContent/>}>
         <Element {...props} />
     </Suspense>
 );
