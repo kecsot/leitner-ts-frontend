@@ -5,7 +5,7 @@ import Page404 from "../../pages/Page404.tsx";
 import {useCustomPaginationProps} from "../../hook/useCustomPaginationProps.ts";
 import {CustomPagination} from "../../components/base/customPagination/CustomPagination.tsx";
 import {BoxItemEventProps} from "../../components/box/BoxItem.tsx";
-import {Box, Stack} from "@mui/material";
+import {Box, LinearProgress, Stack} from "@mui/material";
 
 type Props = BoxItemEventProps
 
@@ -15,6 +15,7 @@ export const BoxListContainer = ({...rest}: Props) => {
     })
     const {
         isLoading,
+        isFetching,
         data
     } = useBoxListQuery(pagination.requestProps, {
             useErrorBoundary: true,
@@ -22,7 +23,7 @@ export const BoxListContainer = ({...rest}: Props) => {
         }
     )
 
-    if (isLoading) return <LoadingProgressBar/>
+    if (!data && isLoading) return <LoadingProgressBar/>
     if (!data) return <Page404/>
 
     return (
@@ -31,6 +32,7 @@ export const BoxListContainer = ({...rest}: Props) => {
                 total={data.total}
                 {...pagination.props}
             />
+            {isFetching && <LinearProgress/>}
             <Box>
                 <BoxList
                     items={data.data}

@@ -4,6 +4,7 @@ import Page404 from "../../pages/Page404.tsx";
 import {CardList} from "../../components/card/CardList.tsx";
 import {CustomPagination} from "../../components/base/customPagination/CustomPagination.tsx";
 import {useCustomPaginationProps} from "../../hook/useCustomPaginationProps.ts";
+import {LinearProgress} from "@mui/material";
 
 type Props = {
     boxId: number
@@ -16,6 +17,7 @@ export const BoxCardListContainer = ({boxId}: Props) => {
 
     const {
         isLoading,
+        isFetching,
         data
     } = useBoxCardListQuery(boxId, pagination.requestProps, {
         useErrorBoundary: true,
@@ -31,6 +33,7 @@ export const BoxCardListContainer = ({boxId}: Props) => {
                 total={data.total}
                 {...pagination.props}
             />
+            {isFetching && <LinearProgress/>}
             <CardList items={data.data}/>
         </>
     )

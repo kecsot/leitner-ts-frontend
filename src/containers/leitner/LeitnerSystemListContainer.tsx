@@ -4,6 +4,7 @@ import {useCustomPaginationProps} from "../../hook/useCustomPaginationProps.ts";
 import {CustomPagination} from "../../components/base/customPagination/CustomPagination.tsx";
 import {useLeitnerSystemListQuery} from "../../api/queries/leitner.ts";
 import {LeitnerSystemList} from "../../components/leitner/LeitnerSystemList.tsx";
+import {LinearProgress} from "@mui/material";
 
 export const LeitnerSystemListContainer = () => {
     const pagination = useCustomPaginationProps({
@@ -11,6 +12,7 @@ export const LeitnerSystemListContainer = () => {
     })
     const {
         isLoading,
+        isFetching,
         data
     } = useLeitnerSystemListQuery(pagination.requestProps, {
         useErrorBoundary: true,
@@ -26,6 +28,7 @@ export const LeitnerSystemListContainer = () => {
                 total={data.total}
                 {...pagination.props}
             />
+            {isFetching && <LinearProgress/>}
             <LeitnerSystemList
                 items={data.data}
             />
