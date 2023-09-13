@@ -1,6 +1,5 @@
 import {BoxList} from "../../components/box/BoxList.tsx";
 import {useBoxListQuery} from "../../api/queries/box.ts";
-import {LoadingProgressBar} from "../../components/base/progressBar/LoadingProgressBar.tsx";
 import Page404 from "../../pages/Page404.tsx";
 import {useCustomPaginationProps} from "../../hook/useCustomPaginationProps.ts";
 import {CustomPagination} from "../../components/base/customPagination/CustomPagination.tsx";
@@ -14,16 +13,15 @@ export const BoxListContainer = ({...rest}: Props) => {
         itemsPerPage: 10
     })
     const {
-        isLoading,
         isFetching,
         data
     } = useBoxListQuery(pagination.requestProps, {
+            suspense: true,
             useErrorBoundary: true,
             keepPreviousData: true
         }
     )
 
-    if (!data && isLoading) return <LoadingProgressBar/>
     if (!data) return <Page404/>
 
     return (
@@ -39,6 +37,7 @@ export const BoxListContainer = ({...rest}: Props) => {
                     {...rest}
                 />
             </Box>
+            {isFetching && <LinearProgress/>}
             <CustomPagination
                 total={data.total}
                 {...pagination.props}
