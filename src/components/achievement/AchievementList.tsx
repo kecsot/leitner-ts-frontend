@@ -1,6 +1,6 @@
-import { Stack } from "@mui/material";
 import {AchievementType} from "../../@types/achievement.ts";
 import {AchievementItem} from "./AchievementItem.tsx";
+import {Grid} from "@mui/material";
 
 type AchievementListProps = {
     achievements: AchievementType[]
@@ -8,12 +8,20 @@ type AchievementListProps = {
 
 export const AchievementList = ({achievements}: AchievementListProps) => {
     return (
-        <Stack >
+        <Grid
+            gap={2}
+            container>
             {achievements.map((achievement) => (
-                <AchievementItem
+                <Grid
+                    item
                     key={achievement.id}
-                    achievement={achievement}/>
+                    sx={{
+                        width: 200,
+                    }}>
+                    <AchievementItem
+                        achievement={achievement}/>
+                </Grid>
             ))}
-        </Stack>
+        </Grid>
     )
 }

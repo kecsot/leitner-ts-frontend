@@ -10,6 +10,10 @@ for (let i = 0; i < 30; i++) {
         key: `achievement-${i}`,
         name: `Achievement ${i}`,
         description: 'This is a achievement',
+        image: {
+            thumbnailUrl: `https://picsum.photos/20/20?random=${i}-small` + Math.random(),
+            url: `https://picsum.photos/200/200?random=${i}-big-` + Math.random(),
+        },
         acquired: isAcquired,
         acquiredAt: isAcquired ? new Date() : undefined,
         createdAt: new Date(),
