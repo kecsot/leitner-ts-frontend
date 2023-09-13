@@ -5,7 +5,13 @@ import {AchievementList} from "../../components/achievement/AchievementList.tsx"
 
 
 export const AchievementListContainer = () => {
-    const {isLoading, data} = useAchievementListQuery({useErrorBoundary: true});
+    const {
+        isLoading,
+        data
+    } = useAchievementListQuery({
+        suspense: true,
+        useErrorBoundary: true
+    });
 
     if (isLoading) return <LoadingProgressBar/>
     if (!data) return <Page404/>
