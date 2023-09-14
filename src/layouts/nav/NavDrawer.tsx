@@ -41,12 +41,7 @@ const navLists: NavList[] = [
                 name: "Leitner Systems",
                 path: "/leitner-systems",
                 icon: <InboxIcon/>
-            },
-            {
-                name: "Notes",
-                path: "/notes",
-                icon: <InboxIcon/>
-            },
+            }
         ]
     },
     {
@@ -55,11 +50,6 @@ const navLists: NavList[] = [
             {
                 name: "Box Store",
                 path: "/community/store/boxes",
-                icon: <InboxIcon/>
-            },
-            {
-                name: "Leitner Systems Store",
-                path: "/community/store/leitner-systems",
                 icon: <InboxIcon/>
             }
         ]

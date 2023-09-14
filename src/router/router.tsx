@@ -13,10 +13,8 @@ const HomeComponent = SuspenseWrapper(lazy(() => import("../pages/dashboard/Home
 const BoxesComponent = SuspenseWrapper(lazy(() => import("../pages/dashboard/Boxes.tsx")));
 const BoxDetailComponent = SuspenseWrapper(lazy(() => import("../pages/dashboard/box/BoxDetail.tsx")));
 const LeitnerSystemsComponent = SuspenseWrapper(lazy(() => import("../pages/dashboard/LeitnerSystems.tsx")));
-const NotesComponent = SuspenseWrapper(lazy(() => import("../pages/dashboard/Notes.tsx")));
 
 const BoxStoreComponent = SuspenseWrapper(lazy(() => import("../pages/community/store/BoxStore.tsx")));
-const LeitnerSystemStoreComponent = SuspenseWrapper(lazy(() => import("../pages/community/store/LeitnerSystemStore.tsx")));
 
 const AchievementsComponent = SuspenseWrapper(lazy(() => import("../pages/account/Achievements.tsx")));
 const ProfileComponent = SuspenseWrapper(lazy(() => import("../pages/account/Profile.tsx")));
@@ -45,10 +43,6 @@ export function Router() {
         {
             path: 'leitner-systems',
             Component: LeitnerSystemsComponent,
-        },
-        {
-            path: 'notes',
-            Component: NotesComponent,
         }
     ];
 
@@ -56,11 +50,7 @@ export function Router() {
         {
             path: 'community/store/boxes',
             Component: BoxStoreComponent,
-        },
-        {
-            path: 'community/store/leitner-systems',
-            Component: LeitnerSystemStoreComponent,
-        },
+        }
     ];
 
     const accountRoutes = [
