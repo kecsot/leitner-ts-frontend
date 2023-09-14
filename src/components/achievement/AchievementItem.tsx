@@ -72,7 +72,13 @@ export const AchievementItem = ({achievement}: AchievementItemProps) => {
                             variant='body2'>
                             {achievement.description}
                         </Typography>
-
+                        <Typography
+                            variant='caption'
+                            sx={{
+                                opacity: .3
+                            }}>
+                            {`${achievement.acquirePercentageOfUsers}% of users acquired`}
+                        </Typography>
                         {achievement.acquiredAt && (
                             <Typography
                                 variant='caption'

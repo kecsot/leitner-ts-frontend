@@ -16,6 +16,7 @@ for (let i = 0; i < 30; i++) {
         },
         acquired: isAcquired,
         acquiredAt: isAcquired ? new Date() : undefined,
+        acquirePercentageOfUsers: Math.round(Math.random() * 100),
         createdAt: new Date(),
         updatedAt: new Date(),
     })

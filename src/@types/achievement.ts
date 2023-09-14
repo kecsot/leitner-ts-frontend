@@ -10,5 +10,6 @@ export type AchievementType = BaseType & {
         url: string
     }
     acquired: boolean
+    acquirePercentageOfUsers?: number
     acquiredAt?: Date
 }
