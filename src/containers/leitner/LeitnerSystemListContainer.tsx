@@ -1,29 +1,29 @@
-import {LoadingProgressBar} from "../../components/base/progressBar/LoadingProgressBar.tsx";
 import Page404 from "../../pages/Page404.tsx";
 import {useCustomPaginationProps} from "../../hook/useCustomPaginationProps.ts";
 import {CustomPagination} from "../../components/base/customPagination/CustomPagination.tsx";
 import {useLeitnerSystemListQuery} from "../../api/queries/leitner.ts";
 import {LeitnerSystemList} from "../../components/leitner/LeitnerSystemList.tsx";
-import {LinearProgress} from "@mui/material";
+import {LinearProgress, Stack} from "@mui/material";
 
 export const LeitnerSystemListContainer = () => {
+
     const pagination = useCustomPaginationProps({
-        itemsPerPage: 10
+        itemsPerPage: 9
     })
+
     const {
-        isLoading,
         isFetching,
         data
     } = useLeitnerSystemListQuery(pagination.requestProps, {
+        suspense: true,
         useErrorBoundary: true,
         keepPreviousData: true,
     })
 
-    if (isLoading) return <LoadingProgressBar/>
     if (!data) return <Page404/>
 
     return (
-        <>
+        <Stack spacing={2}>
             <CustomPagination
                 total={data.total}
                 {...pagination.props}
@@ -32,6 +32,11 @@ export const LeitnerSystemListContainer = () => {
             <LeitnerSystemList
                 items={data.data}
             />
-        </>
+            {isFetching && <LinearProgress/>}
+            <CustomPagination
+                total={data.total}
+                {...pagination.props}
+            />
+        </Stack>
     )
 }
