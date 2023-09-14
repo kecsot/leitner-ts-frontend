@@ -6,11 +6,18 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import React from "react";
 import {Link} from "react-router-dom";
 import {DRAWER_WIDTH} from "../config.ts";
 import Typography from "@mui/material/Typography";
+import HomeIcon from '@mui/icons-material/Home';
+import AllInboxIcon from '@mui/icons-material/AllInbox';
+import WidgetsIcon from '@mui/icons-material/Widgets';
+import MoveToInboxIcon from '@mui/icons-material/MoveToInbox';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import Person2Icon from '@mui/icons-material/Person2';
+import LocalPoliceIcon from '@mui/icons-material/LocalPolice';
+import ContactMailIcon from '@mui/icons-material/ContactMail';
 
 type NavList = {
     name: string
@@ -30,17 +37,17 @@ const navLists: NavList[] = [
             {
                 name: 'Home',
                 path: '/',
-                icon: <InboxIcon/>
+                icon: <HomeIcon/>
             },
             {
                 name: "Boxes",
                 path: "/boxes",
-                icon: <InboxIcon/>
+                icon: <AllInboxIcon/>
             },
             {
                 name: "Leitner Systems",
                 path: "/leitner-systems",
-                icon: <InboxIcon/>
+                icon: <WidgetsIcon/>
             }
         ]
     },
@@ -50,7 +57,7 @@ const navLists: NavList[] = [
             {
                 name: "Box Store",
                 path: "/community/store/boxes",
-                icon: <InboxIcon/>
+                icon: <MoveToInboxIcon/>
             }
         ]
     },
@@ -60,12 +67,12 @@ const navLists: NavList[] = [
             {
                 name: "Achievements",
                 path: "account/achievements",
-                icon: <InboxIcon/>
+                icon: <EmojiEventsIcon/>
             },
             {
                 name: "Profile",
                 path: "account/profile",
-                icon: <InboxIcon/>
+                icon: <Person2Icon/>
             }
         ]
     },
@@ -75,17 +82,17 @@ const navLists: NavList[] = [
             {
                 name: "Terms of Use",
                 path: "other/terms-of-use",
-                icon: <InboxIcon/>
+                icon: <LocalPoliceIcon/>
             },
             {
                 name: "Privacy Policy",
                 path: "other/privacy-policy",
-                icon: <InboxIcon/>
+                icon: <LocalPoliceIcon/>
             },
             {
                 name: "Contact",
                 path: "other/contact",
-                icon: <InboxIcon/>
+                icon: <ContactMailIcon/>
             }
         ]
     }
