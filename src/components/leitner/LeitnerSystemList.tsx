@@ -1,4 +1,4 @@
-import {Stack} from "@mui/material";
+import {Grid} from "@mui/material";
 import {LeitnerSystemType} from "../../@types/leitner.ts";
 import {LeitnerSystemItem} from "./LeitnerSystemItem.tsx";
 
@@ -9,12 +9,18 @@ type Props = {
 export const LeitnerSystemList = ({items}: Props) => {
 
     return (
-        <Stack>
+        <Grid
+            container
+            spacing={2}>
             {items.map((item) => (
-                <LeitnerSystemItem
-                    key={item.id}
-                    item={item}/>
+                <Grid
+                    sm={4}
+                    item>
+                    <LeitnerSystemItem
+                        key={item.id}
+                        item={item}/>
+                </Grid>
             ))}
-        </Stack>
+        </Grid>
     )
 }

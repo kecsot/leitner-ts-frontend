@@ -6,3 +6,9 @@ export const formatDate = (date: Date): string => {
         day: 'numeric'
     });
 }
+
+
+export const formatLeitnerBoxTime = (timestamp: number): string => {
+    // TODO impl
+    return '1 days 2 hours'
+}

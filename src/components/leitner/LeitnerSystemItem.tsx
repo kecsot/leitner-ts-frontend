@@ -1,5 +1,6 @@
-import {Card, CardContent, CardHeader} from "@mui/material";
+import {Card, CardContent, CardHeader, Stack, Typography} from "@mui/material";
 import {LeitnerSystemType} from "../../@types/leitner.ts";
+import {LeitnerSystemLevelTimeline} from "./LeitnerSystemLevelTimeline.tsx";
 
 type Props = {
     item: LeitnerSystemType
@@ -8,15 +9,21 @@ type Props = {
 export const LeitnerSystemItem = ({item}: Props) => {
 
     return (
-        <Card>
+        <Card sx={{height: '100%'}}>
             <CardHeader title={item.name}/>
             <CardContent>
-                <div>{item.description}</div>
-                {item.levels.map((level, index) => (
-                    <div key={`${item.id}-${index}`}>
-                        {level.waitingTime}
-                    </div>
-                ))}
+                <Stack spacing={2}>
+                    <Typography variant='body1'>
+                        {item.description}
+                    </Typography>
+
+                    <Card variant='outlined'>
+                        <CardContent>
+                            <LeitnerSystemLevelTimeline
+                                item={item}/>
+                        </CardContent>
+                    </Card>
+                </Stack>
             </CardContent>
         </Card>
     )

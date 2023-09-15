@@ -7,6 +7,7 @@ import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
+import {formatLeitnerBoxTime} from "../../utils/dateFormatter.ts";
 
 type Props = {
     item: LeitnerSystemType
@@ -40,7 +41,7 @@ export const LeitnerSystemLevelTimeline = ({item}: Props) => {
                                 <TimelineConnector/>
                             )}
                         </TimelineSeparator>
-                        <TimelineContent>{level.waitingTime}</TimelineContent>
+                        <TimelineContent>{formatLeitnerBoxTime(level.waitingTime)}</TimelineContent>
                     </TimelineItem>
                 )
             })}
