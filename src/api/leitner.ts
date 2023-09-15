@@ -21,6 +21,11 @@ for (let i = 0; i < 100; i++) {
     } as LeitnerSystemType)
 }
 
+export const fetchLeitnerSystem = async (id: number) => {
+    console.log('fetchLeitnerSystem')
+    return DATA[id]
+}
+
 export const fetchAllLeitnerSystem = async () => {
     console.log('fetchAllLeitnerSystem')
     return DATA;
