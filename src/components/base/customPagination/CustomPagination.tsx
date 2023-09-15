@@ -4,6 +4,7 @@ import {UsePaginationProps} from "@mui/material/usePagination/usePagination";
 export type CustomPaginationProps = UsePaginationProps & {
     total: number,
     itemsPerPage: number,
+    showSingleItem?: boolean
 }
 
 /**
@@ -12,10 +13,15 @@ export type CustomPaginationProps = UsePaginationProps & {
  *
  * @param total
  * @param itemsPerPage
+ * @param showSingleItem
  * @param other
  * @constructor
  */
-export const CustomPagination = ({total, itemsPerPage, ...other}: CustomPaginationProps) => {
+export const CustomPagination = ({total, itemsPerPage, showSingleItem, ...other}: CustomPaginationProps) => {
+
+    const numberOfPages = Math.ceil(total / itemsPerPage)
+
+    if (!showSingleItem && numberOfPages === 1) return null
 
     return (
         <Pagination
