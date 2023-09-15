@@ -1,21 +1,20 @@
-import {Navigate, RouterProvider, createBrowserRouter} from "react-router-dom"
+import {createBrowserRouter, Navigate, RouterProvider} from "react-router-dom"
 import Layout from "../layouts/Layout.tsx"
-import {ElementType, Suspense, lazy} from "react";
+import {ElementType, lazy, Suspense} from "react";
+import { LoadingProgressContent } from "../components/base/progressBar/LoadingProgressContent.tsx";
 
 export const SuspenseWrapper = (Element: ElementType) => (props: any) => (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<LoadingProgressContent/>}>
         <Element {...props} />
     </Suspense>
 );
 
 const HomeComponent = SuspenseWrapper(lazy(() => import("../pages/dashboard/Home.tsx")));
-const DecksComponent = SuspenseWrapper(lazy(() => import("../pages/dashboard/Decks.tsx")));
-const DeckDetailComponent = SuspenseWrapper(lazy(() => import("../pages/dashboard/deck/DeckDetail.tsx")));
+const BoxesComponent = SuspenseWrapper(lazy(() => import("../pages/dashboard/Boxes.tsx")));
+const BoxDetailComponent = SuspenseWrapper(lazy(() => import("../pages/dashboard/box/BoxDetail.tsx")));
 const LeitnerSystemsComponent = SuspenseWrapper(lazy(() => import("../pages/dashboard/LeitnerSystems.tsx")));
-const NotesComponent = SuspenseWrapper(lazy(() => import("../pages/dashboard/Notes.tsx")));
 
-const DeckStoreComponent = SuspenseWrapper(lazy(() => import("../pages/community/store/DeckStore.tsx")));
-const LeitnerSystemStoreComponent = SuspenseWrapper(lazy(() => import("../pages/community/store/LeitnerSystemStore.tsx")));
+const BoxStoreComponent = SuspenseWrapper(lazy(() => import("../pages/community/store/BoxStore.tsx")));
 
 const AchievementsComponent = SuspenseWrapper(lazy(() => import("../pages/account/Achievements.tsx")));
 const ProfileComponent = SuspenseWrapper(lazy(() => import("../pages/account/Profile.tsx")));
@@ -34,32 +33,24 @@ export function Router() {
             Component: HomeComponent,
         },
         {
-            path: 'decks',
+            path: 'boxes',
             children: [
-                {element: <Navigate to='/decks/list' replace/>, index: true},
-                {path: 'list', Component: DecksComponent},
-                {path: 'detail/:id', Component: DeckDetailComponent}
+                {element: <Navigate to='/boxes/list' replace/>, index: true},
+                {path: 'list', Component: BoxesComponent},
+                {path: 'detail/:id', Component: BoxDetailComponent}
             ]
         },
         {
             path: 'leitner-systems',
             Component: LeitnerSystemsComponent,
-        },
-        {
-            path: 'notes',
-            Component: NotesComponent,
         }
     ];
 
     const communityRoutes = [
         {
-            path: 'community/store/decks',
-            Component: DeckStoreComponent,
-        },
-        {
-            path: 'community/store/leitner-systems',
-            Component: LeitnerSystemStoreComponent,
-        },
+            path: 'community/store/boxes',
+            Component: BoxStoreComponent,
+        }
     ];
 
     const accountRoutes = [

@@ -1,7 +1,7 @@
 import {BaseType, PaginationRequestParams} from "./base.ts";
 
 export enum StoreType {
-    DECK = 'deck',
+    BOX = 'box',
 }
 
 export type StoreItemType<T extends BaseType> = BaseType & {

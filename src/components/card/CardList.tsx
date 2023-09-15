@@ -1,6 +1,6 @@
-import {CardType} from "../../api/types"
 import {Stack} from "@mui/material";
 import {CardItem} from "./CardItem.tsx";
+import { CardType } from "../../@types/card.ts";
 
 type Props = {
     items: CardType[]

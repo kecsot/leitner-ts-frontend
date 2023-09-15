@@ -5,8 +5,10 @@ import {fetchStoreItemList} from "../store.ts";
 import {StoreItemType, StorePaginationRequestParams} from "../../@types/store.ts";
 
 export const STORE_QUERY_KEYS = {
-    list: (type: string, filters = {}) => ['store', 'list', type, {filters}],
-    lists: ['store', 'list'],
+    key: 'store' as const,
+
+    list: (type: string, filters = {}) => [STORE_QUERY_KEYS.key, 'list', type, {filters}],
+    lists: () => [STORE_QUERY_KEYS.key, 'list'],
 }
 
 export const useStoreItemListQuery = <T extends BaseType>(params: StorePaginationRequestParams, options?: UseQueryOptions<Pagination<StoreItemType<T>>>) => {

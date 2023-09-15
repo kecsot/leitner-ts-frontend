@@ -1,6 +1,6 @@
 import React, {useMemo, useState} from "react";
 import {PaginationRequestParams} from "../@types/base.ts";
-import {CustomPaginationProps} from "../components/base/CustomPagination.tsx";
+import {CustomPaginationProps} from "../components/base/customPagination/CustomPagination.tsx";
 
 type Props = {
     defaultPage?: number,

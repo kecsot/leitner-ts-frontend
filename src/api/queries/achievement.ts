@@ -5,10 +5,12 @@ import {UseQueryOptions} from "react-query/types/react/types";
 
 
 export const ACHIEVEMENT_CARD_QUERY_KEYS = {
-    list: (filters = {}) => ['achievement', 'list', {filters}],
-    lists: ['achievement', 'list'],
-    detail: (id: string) => ['achievement', 'detail', id],
-    details: ['achievement', 'detail'],
+    key: 'achievement' as const,
+
+    list: (filters = {}) => [ACHIEVEMENT_CARD_QUERY_KEYS.key, 'list', {filters}],
+    lists: () => [ACHIEVEMENT_CARD_QUERY_KEYS.key, 'list'],
+    detail: (id: string) => [ACHIEVEMENT_CARD_QUERY_KEYS.key, 'detail', id],
+    details: () => [ACHIEVEMENT_CARD_QUERY_KEYS.key, 'detail'],
 }
 
 export const useAchievementListQuery = (options?: UseQueryOptions<AchievementType[]>): UseQueryResult<AchievementType[]> => {
