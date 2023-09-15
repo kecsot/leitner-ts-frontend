@@ -51,6 +51,9 @@ export const fetchBoxList = async (params: { page: number, limit: number }): Pro
 export const postBox = async (item: BoxType) => {
     console.log('postBox', item)
     await wait(1000)
+    item.numberOfCards = 0
+    item.dueCards = 0
+    item.createdAt = new Date()
     DATA.push(item)
     return item
 }
@@ -59,6 +62,7 @@ export const patchBox = async (item: BoxType) => {
     console.log('updateBox', item)
     await wait(1000)
     DATA[item.id].name = item.name
+    DATA[item.id].description = item.description
     return item
 }
 
